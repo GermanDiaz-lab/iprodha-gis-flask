@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>BIM MISIONES</title>
+    <meta name="description" content="Bim Misiones impulsado por IPRODHA" />
+    <meta name="keywords" content="bim, misiones, iprodha, bim misiones, iprodha bim, encuesta bim" />
+    <meta name="author" content="German Diaz" />
+
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet">
+
+
+    <!-- =======================================================
+  * Template Name: Logis - v1.3.0
+  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+        *,
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html,
+        body {
+            height: 100%;
+            background-color: #152733;
+            overflow: scroll;
+        }
+
+
+        .form-holder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .form-holder .form-content {
+            position: relative;
+            text-align: center;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            padding: 60px;
+        }
+
+        .form-content .form-items {
+            border: 3px solid #fff;
+            padding: 40px;
+            display: inline-block;
+            width: 100%;
+            min-width: 540px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            text-align: left;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+
+        .form-content h3 {
+            color: #fff;
+            text-align: left;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-content h3.form-title {
+            margin-bottom: 30px;
+        }
+
+        .form-content p {
+            color: #fff;
+            text-align: left;
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 20px;
+            margin-bottom: 30px;
+        }
+
+
+        .form-content label,
+        .was-validated .form-check-input:invalid~.form-check-label,
+        .was-validated .form-check-input:valid~.form-check-label {
+            color: #fff;
+        }
+
+        .form-content input[type=text],
+        .form-content input[type=password],
+        .form-content input[type=email],
+        .form-content select {
+            width: 100%;
+            padding: 9px 20px;
+            text-align: left;
+            border: 0;
+            outline: 0;
+            border-radius: 6px;
+            background-color: #fff;
+            font-size: 15px;
+            font-weight: 300;
+            color: #8D8D8D;
+            -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+
+        .btn-primary {
+            background-color: #6C757D;
+            outline: none;
+            border: 0px;
+            box-shadow: none;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active {
+            background-color: #495056;
+            outline: none !important;
+            border: none !important;
+            box-shadow: none;
+        }
+
+        .form-content textarea {
+            position: static !important;
+            width: 100%;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-align: left;
+            background-color: #fff;
+            border: 0;
+            font-size: 15px;
+            font-weight: 300;
+            color: #8D8D8D;
+            outline: none;
+            resize: none;
+            height: 120px;
+            -webkit-transition: none;
+            transition: none;
+            margin-bottom: 14px;
+        }
+
+        .form-content textarea:hover,
+        .form-content textarea:focus {
+            border: 0;
+            background-color: #ebeff8;
+            color: #8D8D8D;
+        }
+
+        .mv-up {
+            margin-top: -9px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .invalid-feedback {
+            color: #ff606e;
+        }
+
+        .valid-feedback {
+            color: #2acc80;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-body {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">INFORME</strong>
+                <small></small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                DATOS GUARDADOS EXITOSAMENTE.
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-body">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>EDITAR INFORME SOCIOECONOMICO Y FINANCIERO GERENCIA SOCIAL - DIRECCION DE TRABAJO DE
+                                CAMPO
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf1">
+
+                                <div class="col-md-12">
+                                    <label for="titular">TITULAR</label>
+                                    <input id="titular" class="form-control" value="{{ informe.titular }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="titulardni">TITULAR DNI</label>
+                                    <input id="titulardni" class="form-control" value="{{ informe.titulardni }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ocupante">OCUPANTE</label>
+                                    <input id="ocupante" class="form-control" value="{{ informe.ocupante }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ocupantedni">OCUPANTE DNI</label>
+                                    <input id="ocupantedni" class="form-control" value="{{ informe.ocupantedni }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="sitjur">SIT. JURIDICA</label>
+                                    <input id="sitjur" class="form-control" value="{{ informe.sitjur }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="estadodeud">ESTADO DE DEUDA</label>
+                                    <input id="estadodeud" class="form-control" value="{{ informe.estadodeud }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="notdeud">NOTIFICACION DE DEUDA</label>
+                                    <input id="notdeud" class="form-control" value="{{ informe.notdeud }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="residedesde">RESIDE DESDE</label>
+                                    <input id="residedesde" class="form-control" value="{{ informe.residedesde }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="tipologia">TIPOLOGIA</label>
+                                    <input id="tipologia" class="form-control" value="{{ informe.tipologia }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="estado">ESTADO</label>
+                                    <input id="estado" class="form-control" value="{{ informe.estado }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="observacion">OBSERVACION</label>
+                                    <input id="observacion" class="form-control" value="{{ informe.observacion }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="antecedenteiprodha">ANTECEDENTES IPRODHA</label>
+                                    <input id="antecedenteiprodha" class="form-control"
+                                        value="{{ informe.antecedenteiprodha }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="antecedenteviv">ANTECEDENTES VIVIENDA IPRODHA</label>
+                                    <input id="antecedenteviv" class="form-control" value="{{ informe.antecedenteviv }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="antecedentemv">ANTECEDENTES PROGRAMA MEJOR VIVIR</label>
+                                    <input id="antecedentemv" class="form-control" value="{{ informe.antecedentemv }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="antecedentevr">ANTECEDENTES VIVIENDA RURAL</label>
+                                    <input id="antecedentevr" class="form-control" value="{{ informe.antecedentevr }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="antecedentearreglo">ANTECEDENTES ARREGLO MI CASA</label>
+                                    <input id="antecedentearreglo" class="form-control"
+                                        value="{{ informe.antecedentearreglo }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="antecedentelote">ANTECEDENTES LOTES</label>
+                                    <input id="antecedentelote" class="form-control"
+                                        value="{{ informe.antecedentelote }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="otrosinicio">OTROS</label>
+                                    <input id="otrosinicio" class="form-control" value="{{ informe.otrosinicio }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="comoaccede">COMO ACCEDE A LA VIVIENDA</label>
+                                    <input id="comoaccede" class="form-control" value="{{ informe.comoaccede }}"
+                                        type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit1" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>GRUPO FAMILIARL: según Estado Ocupacional
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf2">
+
+                                <div class="col-md-12">
+                                    <label for="titulardni">D N I</label>
+                                    <input id="titulardni" class="form-control" value="{{ informe.titulardni }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="dniconyuge">D.N.I. CÓNYUGE</label>
+                                    <input id="dniconyuge" class="form-control" value="{{ informe.dniconyuge }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="dnihijos">D.N.I. HIJO</label>
+                                    <input id="dnihijos" class="form-control" value="{{ informe.dnihijos }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="actadematrimonio">ACTA DE MATRIMONIO</label>
+                                    <input id="actadematrimonio" class="form-control"
+                                        value="{{ informe.actadematrimonio }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="unionconvivencial">UNION CONVIVENCIAL</label>
+                                    <input id="unionconvivencial" class="form-control"
+                                        value="{{ informe.unionconvivencial }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="escolaridad">ESCOLARIDAD - (SI, ESCUELA PUBLICA, ESCUELA PRIVADA, GASTOS ESCOLARES)</label>
+                                    <input id="escolaridad" class="form-control" value="{{ informe.escolaridad }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="estadociviltitular">ESTADO CIVIL</label>
+                                    <input id="estadociviltitular" class="form-control"
+                                        value="{{ informe.estadociviltitular }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="estadocivilconyuge">ESTADO CIVIL CÓNYUGE</label>
+                                    <input id="estadocivilconyuge" class="form-control"
+                                        value="{{ informe.estadocivilconyuge }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="correoelectronico">CORREO ELECTRONICO</label>
+                                    <input id="correoelectronico" class="form-control"
+                                        value="{{ informe.correoelectronico }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="observaciongrupo">OBSERVACION</label>
+                                    <input id="observaciongrupo" class="form-control"
+                                        value="{{ informe.observaciongrupo }}" type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit2" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SITUACION DE SALUD
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf3">
+
+                                <div class="col-md-12">
+                                    <label for="obrasocial">OBRA SOCIAL (true - false)</label>
+                                    <input id="obrasocial" class="form-control" value="{{ informe.obrasocial }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="tienecud">TIENE CUD (true - false)</label>
+                                    <input id="tienecud" class="form-control" value="{{ informe.tienecud }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="vigenciacud">VIGENCIA</label>
+                                    <input id="vigenciacud" class="form-control" value="{{ informe.vigenciacud }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="discapacidad">DISCAPACIDAD</label>
+                                    <input id="discapacidad" class="form-control" value="{{ informe.discapacidad }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="diagnostico">DIAGNOSTICO</label>
+                                    <input id="diagnostico" class="form-control" value="{{ informe.diagnostico }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="trasnsplantado">TRANSPLANTADO (true - false)</label>
+                                    <input id="trasnsplantado" class="form-control" value="{{ informe.trasnsplantado }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="carnet">CARNET (true - false)</label>
+                                    <input id="carnet" class="form-control" value="{{ informe.carnet }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="listadeespera">LISTA DE ESPERA (true - false)</label>
+                                    <input id="listadeespera" class="form-control" value="{{ informe.listadeespera }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="observaciontrasplante">OBSERVACIONES</label>
+                                    <input id="observaciontrasplante" class="form-control"
+                                        value="{{ informe.observaciontrasplante }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="silladeruedas">SILLA DE RUEDAS (true - false)</label>
+                                    <input id="silladeruedas" class="form-control" value="{{ informe.silladeruedas }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="muletas">MULETAS (true - false)</label>
+                                    <input id="muletas" class="form-control" value="{{ informe.muletas }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="andador">ANDADOR (true - false)</label>
+                                    <input id="andador" class="form-control" value="{{ informe.andador }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="otrosmovilidad">OTROS</label>
+                                    <input id="otrosmovilidad" class="form-control" value="{{ informe.otrosmovilidad }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="observaciongrupo">OBSERVACION</label>
+                                    <input id="observaciongrupo" class="form-control"
+                                        value="{{ informe.observaciongrupo }}" type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit3" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SITUACION ECONOMICA - INGRESOS 1
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf4">
+
+                                <div class="col-md-12">
+                                    <label for="nombreingreso1">NOMBRE</label>
+                                    <input id="nombreingreso1" class="form-control" value="{{ informe.nombreingreso1 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="telefono1">TELEFONO</label>
+                                    <input id="telefono1" class="form-control" value="{{ informe.telefono1 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="fechadelrecibo1">FECHA DEL RECIBO</label>
+                                    <input id="fechadelrecibo1" class="form-control"
+                                        value="{{ informe.fechadelrecibo1 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="categorialaboral1">CATEGORIA LABORAL</label>
+                                    <input id="categorialaboral1" class="form-control"
+                                        value="{{ informe.categorialaboral1 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ingreso1">INGRESOS</label>
+                                    <input id="ingreso1" class="form-control" value="{{ informe.ingreso1 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="lugar1">LUGAR</label>
+                                    <input id="lugar1" class="form-control" value="{{ informe.lugar1 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ocupacion1">OCUPACION</label>
+                                    <input id="ocupacion1" class="form-control" value="{{ informe.ocupacion1 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="domicilio1">DOMICILIO</label>
+                                    <input id="domicilio1" class="form-control" value="{{ informe.domicilio1 }}"
+                                        type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit4" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SITUACION ECONOMICA - INGRESOS 2
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf5">
+
+                                <div class="col-md-12">
+                                    <label for="nombreingreso2">NOMBRE</label>
+                                    <input id="nombreingreso2" class="form-control" value="{{ informe.nombreingreso2 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="telefono2">TELEFONO</label>
+                                    <input id="telefono2" class="form-control" value="{{ informe.telefono2 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="fechadelrecibo2">FECHA DEL RECIBO</label>
+                                    <input id="fechadelrecibo2" class="form-control"
+                                        value="{{ informe.fechadelrecibo2 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="categorialaboral2">CATEGORIA LABORAL</label>
+                                    <input id="categorialaboral2" class="form-control"
+                                        value="{{ informe.categorialaboral2 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ingreso2">INGRESOS</label>
+                                    <input id="ingreso2" class="form-control" value="{{ informe.ingreso2 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="lugar2">LUGAR</label>
+                                    <input id="lugar2" class="form-control" value="{{ informe.lugar2 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ocupacion2">OCUPACION</label>
+                                    <input id="ocupacion2" class="form-control" value="{{ informe.ocupacion2 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="domicilio2">DOMICILIO</label>
+                                    <input id="domicilio2" class="form-control" value="{{ informe.domicilio2 }}"
+                                        type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit5" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SITUACION ECONOMICA - INGRESOS 3
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf6">
+
+                                <div class="col-md-12">
+                                    <label for="nombreingreso3">NOMBRE</label>
+                                    <input id="nombreingreso3" class="form-control" value="{{ informe.nombreingreso3 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="telefono3">TELEFONO</label>
+                                    <input id="telefono3" class="form-control" value="{{ informe.telefono3 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="fechadelrecibo3">FECHA DEL RECIBO</label>
+                                    <input id="fechadelrecibo3" class="form-control"
+                                        value="{{ informe.fechadelrecibo3 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="categorialaboral3">CATEGORIA LABORAL</label>
+                                    <input id="categorialaboral3" class="form-control"
+                                        value="{{ informe.categorialaboral3 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ingreso3">INGRESOS</label>
+                                    <input id="ingreso3" class="form-control" value="{{ informe.ingreso3 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="lugar3">LUGAR</label>
+                                    <input id="lugar3" class="form-control" value="{{ informe.lugar3 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ocupacion3">OCUPACION</label>
+                                    <input id="ocupacion3" class="form-control" value="{{ informe.ocupacion3 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="domicilio3">DOMICILIO</label>
+                                    <input id="domicilio3" class="form-control" value="{{ informe.domicilio3 }}"
+                                        type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit6" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SITUACION ECONOMICA - INGRESOS 4
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf7">
+
+                                <div class="col-md-12">
+                                    <label for="nombreingreso4">NOMBRE</label>
+                                    <input id="nombreingreso4" class="form-control" value="{{ informe.nombreingreso4 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="telefono4">TELEFONO</label>
+                                    <input id="telefono4" class="form-control" value="{{ informe.telefono4 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="fechadelrecibo4">FECHA DEL RECIBO</label>
+                                    <input id="fechadelrecibo4" class="form-control"
+                                        value="{{ informe.fechadelrecibo4 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="categorialaboral4">CATEGORIA LABORAL</label>
+                                    <input id="categorialaboral4" class="form-control"
+                                        value="{{ informe.categorialaboral4 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ingreso4">INGRESOS</label>
+                                    <input id="ingreso4" class="form-control" value="{{ informe.ingreso4 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="lugar4">LUGAR</label>
+                                    <input id="lugar4" class="form-control" value="{{ informe.lugar4 }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ocupacion4">OCUPACION</label>
+                                    <input id="ocupacion4" class="form-control" value="{{ informe.ocupacion4 }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="domicilio4">DOMICILIO</label>
+                                    <input id="domicilio4" class="form-control" value="{{ informe.domicilio4 }}"
+                                        type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit7" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SITUACION ECONOMICA - FINANCIERA
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf8">
+
+                                <div class="col-md-12">
+                                    <label for="principalpagador">PRINCIPAL PAGADOR</label>
+                                    <input id="principalpagador" class="form-control"
+                                        value="{{ informe.principalpagador }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="catlaboralpagador">CATEGORIA LABORAL</label>
+                                    <input id="catlaboralpagador" class="form-control"
+                                        value="{{ informe.catlaboralpagador }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="garante">GARANTE</label>
+                                    <input id="garante" class="form-control" value="{{ informe.garante }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="catlaboralgarante">GARANTE CATEGORIA LABORAL</label>
+                                    <input id="catlaboralgarante" class="form-control"
+                                        value="{{ informe.catlaboralgarante }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="declaracionjurada">DECLARACION JURADA</label>
+                                    <input id="declaracionjurada" class="form-control"
+                                        value="{{ informe.declaracionjurada }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="dnipagador">PAGADOR DNI</label>
+                                    <input id="dnipagador" class="form-control" value="{{ informe.dnipagador }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ingresospagador">PAGADOR INGRESOS</label>
+                                    <input id="ingresospagador" class="form-control"
+                                        value="{{ informe.ingresospagador }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="dnigarante">GARANTE DNI</label>
+                                    <input id="dnigarante" class="form-control" value="{{ informe.dnigarante }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ingresosgarante">GARANTE INGRESOS</label>
+                                    <input id="ingresosgarante" class="form-control"
+                                        value="{{ informe.ingresosgarante }}" type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit8" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SITUACION ECONOMICA - TITULAR
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf9">
+
+                                <div class="col-md-12">
+                                    <label for="titularprestamos">PRESTAMOS</label>
+                                    <input id="titularprestamos" class="form-control"
+                                        value="{{ informe.titularprestamos }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="prestamomonto">MONTO</label>
+                                    <input id="prestamomonto" class="form-control" value="{{ informe.prestamomonto }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="plazo">PLAZO</label>
+                                    <input id="plazo" class="form-control" value="{{ informe.plazo }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="consumomensual">CONSUMO MENSUAL</label>
+                                    <input id="consumomensual" class="form-control" value="{{ informe.consumomensual }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="tarjetas">TARJETAS</label>
+                                    <input id="tarjetas" class="form-control" value="{{ informe.tarjetas }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="tipodetarjeta">TIPO DE TARJETAS</label>
+                                    <input id="tipodetarjeta" class="form-control" value="{{ informe.tipodetarjeta }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="observacionessiteco">OBSERVACIONES</label>
+                                    <input id="observacionessiteco" class="form-control"
+                                        value="{{ informe.observacionessiteco }}" type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit9" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>SERVICIOS
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf10">
+
+                                <div class="col-md-12">
+                                    <label for="luz">LUZ (true - false)</label>
+                                    <input id="luz" class="form-control" value="{{ informe.luz }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="montoluz">MONTO MENSUAL</label>
+                                    <input id="montoluz" class="form-control" value="{{ informe.montoluz }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="luzformal">FORMAL - CLANDESTINO</label>
+                                    <input id="luzformal" class="form-control" value="{{ informe.luzformal }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="agua">AGUA (true - false)</label>
+                                    <input id="agua" class="form-control" value="{{ informe.agua }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="aguamonto">MONTO MENSUAL</label>
+                                    <input id="aguamonto" class="form-control" value="{{ informe.aguamonto }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="aguaformal">FORMAL - CLANDESTINO</label>
+                                    <input id="aguaformal" class="form-control" value="{{ informe.aguaformal }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="cable">CABLE (true - false)</label>
+                                    <input id="cable" class="form-control" value="{{ informe.cable }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="cablemonto">MONTO MENSUAL</label>
+                                    <input id="cablemonto" class="form-control" value="{{ informe.cablemonto }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="cableformal">FORMAL - CLANDESTINO</label>
+                                    <input id="cableformal" class="form-control" value="{{ informe.cableformal }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="internet">INTERNET (true - false)</label>
+                                    <input id="internet" class="form-control" value="{{ informe.internet }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="internetmonto">MONTO MENSUAL</label>
+                                    <input id="internetmonto" class="form-control" value="{{ informe.internetmonto }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="internetformal">FORMAL - CLANDESTINO</label>
+                                    <input id="internetformal" class="form-control" value="{{ informe.internetformal }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="observacionesservicios">OBSERVACIONES</label>
+                                    <input id="observacionesservicios" class="form-control"
+                                        value="{{ informe.observacionesservicios }}" type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit10" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>CONCLUSION CUOTA MODALIDAD REGULARIZACION
+                            </h3>
+                            <p>Despued de cambiar los datos hacer click en el boton "Guardar Cambios".</p>
+                            <form class="form-inf11">
+
+                                <div class="col-md-12">
+                                    <label for="cuotasocial">CUOTA SOCIAL</label>
+                                    <input id="cuotasocial" class="form-control" value="{{ informe.cuotasocial }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="cuotaprovisoria">CUOTA PROVISORIA</label>
+                                    <input id="cuotaprovisoria" class="form-control"
+                                        value="{{ informe.cuotaprovisoria }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="cuotaestandar">CUOTA ESTANDAR</label>
+                                    <input id="cuotaestandar" class="form-control" value="{{ informe.cuotaestandar }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="planventa">PLAN VENTA</label>
+                                    <input id="planventa" class="form-control" value="{{ informe.planventa }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="planalquiler">PLAN ALQUILER</label>
+                                    <input id="planalquiler" class="form-control" value="{{ informe.planalquiler }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="otrosmodalidad">OTROS</label>
+                                    <input id="otrosmodalidad" class="form-control" value="{{ informe.otrosmodalidad }}"
+                                        type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="plazopresentacion">PLAZO PRESENTACION DE DOCUMENTACION</label>
+                                    <input id="plazopresentacion" class="form-control"
+                                        value="{{ informe.plazopresentacion }}" type="text">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="observacionesplazo">OBSERVACIONES</label>
+                                    <input id="observacionesplazo" class="form-control"
+                                        value="{{ informe.observacionesplazo }}" type="text">
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button id="submit11" type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        function showToast() {
+            var toast = document.getElementById('liveToast');
+            var bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+        }
+
+        const con1 = document.querySelector(".form-inf1");
+        console.log(con1.titulardni)
+
+        con1.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit1").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "titular": con1.titular.value,
+                "titulardni": con1.titulardni.value,
+                "ocupante": con1.ocupante.value,
+                "ocupantedni": con1.ocupantedni.value,
+                "sitjur": con1.sitjur.value,
+                "estadodeud": con1.estadodeud.value,
+                "notdeud": con1.notdeud.value,
+                "residedesde": con1.residedesde.value,
+                "tipologia": con1.tipologia.value,
+                "estado": con1.estado.value,
+                "observacion": con1.observacion.value,
+                "antecedenteiprodha": con1.antecedenteiprodha.value,
+                "antecedenteviv": con1.antecedenteviv.value,
+                "antecedentemv": con1.antecedentemv.value,
+                "antecedentevr": con1.antecedentevr.value,
+                "antecedentearreglo": con1.antecedentearreglo.value,
+                "antecedentelote": con1.antecedentelote.value,
+                "otrosinicio": con1.otrosinicio.value,
+                "comoaccede": con1.comoaccede.value,
+                "operacion": 'editarinforme1',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit1").disabled = false;
+                };
+            })
+        });
+
+        const con2 = document.querySelector(".form-inf2");
+
+        con2.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit2").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "titulardni": con2.titulardni.value,
+                "dniconyuge": con2.dniconyuge.value,
+                "dnihijos": con2.dnihijos.value,
+                "actadematrimonio": con2.actadematrimonio.value,
+                "unionconvivencial": con2.unionconvivencial.value,
+                "escolaridad": con2.escolaridad.value,
+                "estadociviltitular": con2.estadociviltitular.value,
+                "estadocivilconyuge": con2.estadocivilconyuge.value,
+                "correoelectronico": con2.correoelectronico.value,
+                "observaciongrupo": con2.observaciongrupo.value,
+                "operacion": 'editarinforme2',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit2").disabled = false;
+                };
+            })
+        });
+
+        const con3 = document.querySelector(".form-inf3");
+
+        con3.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit3").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "obrasocial": con3.obrasocial.value,
+                "tienecud": con3.tienecud.value,
+                "vigenciacud": con3.vigenciacud.value,
+                "discapacidad": con3.discapacidad.value,
+                "diagnostico": con3.diagnostico.value,
+                "trasnsplantado": con3.trasnsplantado.value,
+                "carnet": con3.carnet.value,
+                "listadeespera": con3.listadeespera.value,
+                "observaciontrasplante": con3.observaciontrasplante.value,
+                "silladeruedas": con3.silladeruedas.value,
+                "muletas": con3.muletas.value,
+                "andador": con3.andador.value,
+                "otrosmovilidad": con3.otrosmovilidad.value,
+                "observaciongrupo": con3.observaciongrupo.value,
+                "operacion": 'editarinforme3',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit3").disabled = false;
+                };
+            })
+        });
+
+        const con4 = document.querySelector(".form-inf4");
+
+        con4.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit4").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "nombreingreso1": con4.nombreingreso1.value,
+                "telefono1": con4.telefono1.value,
+                "fechadelrecibo1": con4.fechadelrecibo1.value,
+                "categorialaboral1": con4.categorialaboral1.value,
+                "ingreso1": con4.ingreso1.value,
+                "lugar1": con4.lugar1.value,
+                "ocupacion1": con4.ocupacion1.value,
+                "domicilio1": con4.domicilio1.value,
+                "operacion": 'editarinforme4',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit4").disabled = false;
+                };
+            })
+        });
+
+        const con5 = document.querySelector(".form-inf5");
+
+        con5.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit5").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "nombreingreso2": con5.nombreingreso2.value,
+                "telefono2": con5.telefono2.value,
+                "fechadelrecibo2": con5.fechadelrecibo2.value,
+                "categorialaboral2": con5.categorialaboral2.value,
+                "ingreso2": con5.ingreso2.value,
+                "lugar2": con5.lugar2.value,
+                "ocupacion2": con5.ocupacion2.value,
+                "domicilio2": con5.domicilio2.value,
+                "operacion": 'editarinforme5',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit5").disabled = false;
+                };
+            })
+        });
+
+        const con6 = document.querySelector(".form-inf6");
+
+        con6.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit6").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "nombreingreso3": con6.nombreingreso3.value,
+                "telefono3": con6.telefono3.value,
+                "fechadelrecibo3": con6.fechadelrecibo3.value,
+                "categorialaboral3": con6.categorialaboral3.value,
+                "ingreso3": con6.ingreso3.value,
+                "lugar3": con6.lugar3.value,
+                "ocupacion3": con6.ocupacion3.value,
+                "domicilio3": con6.domicilio3.value,
+                "operacion": 'editarinforme6',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit6").disabled = false;
+                };
+            })
+        });
+
+        const con7 = document.querySelector(".form-inf7");
+
+        con7.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit7").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "nombreingreso4": con7.nombreingreso4.value,
+                "telefono4": con7.telefono4.value,
+                "fechadelrecibo4": con7.fechadelrecibo4.value,
+                "categorialaboral4": con7.categorialaboral4.value,
+                "ingreso4": con7.ingreso4.value,
+                "lugar4": con7.lugar4.value,
+                "ocupacion4": con7.ocupacion4.value,
+                "domicilio4": con7.domicilio4.value,
+                "operacion": 'editarinforme7',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit7").disabled = false;
+                };
+            })
+        });
+
+        const con8 = document.querySelector(".form-inf8");
+
+        con8.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit8").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "principalpagador": con8.principalpagador.value,
+                "catlaboralpagador": con8.catlaboralpagador.value,
+                "garante": con8.garante.value,
+                "catlaboralgarante": con8.catlaboralgarante.value,
+                "declaracionjurada": con8.declaracionjurada.value,
+                "ingresospagador": con8.ingresospagador.value,
+                "dnigarante": con8.dnigarante.value,
+                "ingresosgarante": con8.ingresosgarante.value,
+                "operacion": 'editarinforme8',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit8").disabled = false;
+                };
+            })
+        });
+
+        const con9 = document.querySelector(".form-inf9");
+
+        con9.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit9").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "titularprestamos": con9.titularprestamos.value,
+                "prestamomonto": con9.prestamomonto.value,
+                "plazo": con9.plazo.value,
+                "consumomensual": con9.consumomensual.value,
+                "tarjetas": con9.tarjetas.value,
+                "tipodetarjeta": con9.tipodetarjeta.value,
+                "observacionessiteco": con9.observacionessiteco.value,
+                "operacion": 'editarinforme9',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit9").disabled = false;
+                };
+            })
+        });
+
+        const con10 = document.querySelector(".form-inf10");
+
+        con10.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit10").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "luz": con10.luz.value,
+                "montoluz": con10.montoluz.value,
+                "luzformal": con10.luzformal.value,
+                "agua": con10.agua.value,
+                "aguamonto": con10.aguamonto.value,
+                "aguaformal": con10.aguaformal.value,
+                "cable": con10.cable.value,
+                "cablemonto": con10.cablemonto.value,
+                "cableformal": con10.cableformal.value,
+                "internet": con10.internet.value,
+                "internetmonto": con10.internetmonto.value,
+                "internetformal": con10.internetformal.value,
+                "observacionesservicios": con10.observacionesservicios.value,
+                "operacion": 'editarinforme10',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit10").disabled = false;
+                };
+            })
+        });
+
+        const con11 = document.querySelector(".form-inf11");
+
+        con11.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("submit11").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "cuotasocial": con11.cuotasocial.value,
+                "cuotaprovisoria": con11.cuotaprovisoria.value,
+                "cuotaestandar": con11.cuotaestandar.value,
+                "planventa": con11.planventa.value,
+                "planalquiler": con11.planalquiler.value,
+                "otrosmodalidad": con11.otrosmodalidad.value,
+                "plazopresentacion": con11.plazopresentacion.value,
+                "observacionesplazo": con11.observacionesplazo.value,
+                "operacion": 'editarinforme11',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    showToast()
+                    document.getElementById("submit11").disabled = false;
+                };
+            })
+        });
+
+    </script>
+
+</body>
+
+</html>

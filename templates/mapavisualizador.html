@@ -1,0 +1,641 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Aplicacion GIS</title>
+    <meta name="author" content="luckynvic@gmail.com">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='ext/customScroll/css/jquery.mCustomScrollbar.css') }}">
+
+    <link
+        href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic'
+        rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mapa.css') }}">
+
+
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet">
+
+
+
+    <!-- Modernizr JS -->
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+
+    <style>
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /*-----------------------------------------------------------------------------------the container must be positioned relative:*/
+        .autocomplete {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            z-index: 1;
+
+
+        }
+
+        .autocompleteobra {
+            position: absolute;
+            top: 135px;
+            right: 700px;
+            z-index: 1;
+
+
+        }
+
+        input {
+            border: 1px solid;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 16px;
+
+        }
+
+        input[type=text] {
+            background-color: #f1f1f1;
+            width: 100%;
+        }
+
+        input[type=button] {
+            background-color: DodgerBlue;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            /*position the autocomplete items to be the same width as the container:*/
+            top: 100%;
+            left: 0;
+            right: 0;
+            overflow: auto;
+            max-height: 800%;
+
+        }
+
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+
+        }
+
+        /*when hovering an item:*/
+        .autocomplete-items div:hover {
+            background-color: #e9e9e9;
+        }
+
+        /*when navigating through the items using the arrow keys:*/
+        .autocomplete-active {
+            background-color: DodgerBlue !important;
+            color: #ffffff;
+        }
+
+        html,
+        body,
+        .intro {
+            height: 100%;
+        }
+
+        table td,
+        table th {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        thead th {
+            color: #fff;
+        }
+
+        .card {
+            border-radius: .5rem;
+        }
+
+        .table-scroll {
+            border-radius: .5rem;
+        }
+
+        .table-scroll table thead th {
+            font-size: 1.25rem;
+        }
+
+        thead {
+            top: 0;
+            position: sticky;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <form class="autocomplete" style="width:300px;">
+        <input id="myInput" type="text" name="myCountry" placeholder="Obra o Localidad">
+        <input type="button" id="ir" value="Ir a la Ubicacion" onclick="buscar()">
+    </form>
+    <div id="lmapa">
+        <div id="map">
+            <div>
+                <button type="button" id="boton_tabla" class="btn mb-2 mb-md-0 btn-tertiary btn-block" onclick="generarTablaObra()" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i
+                        class="bi bi-arrow-90deg-up"></i>TABLA DE ATRIBUTOS
+                </button>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample">
+            <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
+                style="position: relative; height: 300px">
+                <input type="text" id="filtroInput" onkeyup="filtro()" placeholder="Filtrar Obra.." title="Obra">
+                <table class="table table-striped mb-0" id="myTable">
+                    <thead style="background-color: #002d72;">
+                        <tr>
+                            <th scope="col">OBRA</th>
+                            <th scope="col">EXPEDIENTE</th>
+                            <th scope="col">LATITUD</th>
+                            <th scope="col">LONGITUD</th>
+                            <th scope="col">IR</th>
+                        </tr>
+                    </thead>
+                    <tbody id="columna">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='ext/customScroll/js/jquery.mCustomScrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='ext/customScroll/js/jquery.mousewheel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/application.js') }}"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+    <script src="{{ url_for('static', filename='js/leaflet/mapavisualizador.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+
+
+
+    <script>
+
+
+        var firebaseConfig = {
+
+            apiKey: "AIzaSyAQ0ZeQB2eeLambnVuoMJLN-fc02p4lKdQ",
+            authDomain: "iprodha-app.firebaseapp.com",
+            projectId: "iprodha-app",
+            storageBucket: "iprodha-app.appspot.com",
+            messagingSenderId: "42717497099",
+            appId: "1:42717497099:web:dd1ffb389b93554a4a040e",
+            measurementId: "G-EPYN7660SP"
+
+        };
+
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.firestore();
+        var storageRef = firebase.storage().ref();
+
+
+
+
+        (function ($) {
+
+            $(".point-list-view").mCustomScrollbar({
+                scrollButtons: {
+                    enable: true
+                },
+                theme: 'dark-thick',
+                contentTouchScroll: true
+            });
+
+        })(jQuery);
+
+        function filtro() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("filtroInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        };
+
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) {return false;}
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i]["nombre"].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i]["nombre"].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i]["nombre"].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i]["nombre"] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsByTagName("input")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    document.getElementById("ir").click();
+                }
+
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsByTagName("div");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        };
+
+        async function get() {
+            let url = 'https://espaciocompartido.com.ar/geojsonexptespunbuscar'
+            let obj = await (await fetch(url)).json();
+
+            //console.log(obj);
+            return obj;
+        };
+
+        async function getjsontabla() {
+            let url = 'https://espaciocompartido.com.ar/geojsonexptespun'
+            let obj = await (await fetch(url)).json();
+
+            //console.log(obj);
+            return obj;
+        };
+
+
+        function searchByKeyObra(searchValue) {
+
+            var data;
+            (async () => {
+                data = await get();
+                const result = data.features.filter(feature => feature.properties.obra === searchValue);
+                map.flyTo({
+                    center: [result[0].geometry.coordinates[0], result[0].geometry.coordinates[1]],
+                    essential: true // this animation is considered essential with respect to prefers-reduced-motion
+                });
+            })()
+        };
+
+        function generarTablaObra() {
+            document.getElementById('boton_tabla').removeAttribute("onclick");
+            var data;
+            (async () => {
+                data = await getjsontabla();
+                var htmltabla = ``;
+                for (let i = 0; i < data.features.length; i++) {
+                    htmltabla += `
+                    <tr>
+                        <td>${data.features[i].properties.obra}</td>
+                        <td>${data.features[i].properties.Expte}</td>
+                        <td>${data.features[i].geometry.coordinates[1]}</td>
+                        <td>${data.features[i].geometry.coordinates[0]}</td>
+                        <td onclick="fly(${data.features[i].geometry.coordinates[0]}, ${data.features[i].geometry.coordinates[1]});">IR</td>
+                    </tr>
+                    `;
+
+
+                    document.querySelector("#columna").innerHTML = htmltabla;
+                };
+                }) ()
+            };
+        
+
+
+            function searchByKey(list, key, value) {
+                for (let i = 0; i < list.length; i++) {
+                    if (list[i][key] === value) {
+                        return list[i]["id"];
+                    }
+                }
+                return null;
+            }
+
+            /*An array containing all the country names in the world:*/
+            let countries = [{"id": "54007010", "nombre": "Apóstoles"},
+            {"id": "54007020", "nombre": "Azara"},
+            {"id": "54007025", "nombre": "Barrio Rural"},
+            {"id": "54007030", "nombre": "Estación Apóstoles"},
+            {"id": "54007040", "nombre": "Pindapoy"},
+            {"id": "54007050", "nombre": "Rincón de Azara"},
+            {"id": "54007060", "nombre": "San José"},
+            {"id": "54007070", "nombre": "Tres Capones"},
+            {"id": "54014010", "nombre": "Aristóbulo del Valle"},
+            {"id": "54014020", "nombre": "Campo Grande"},
+            {"id": "54014030", "nombre": "Dos de Mayo"},
+            {"id": "54014050", "nombre": "Dos de Mayo Nucleo III (Bº Bernardino Rivadavia)"},
+            {"id": "54014055", "nombre": "Kilómetro 17"},
+            {"id": "54014060", "nombre": "1º de Mayo"},
+            {"id": "54014070", "nombre": "Pueblo Illia"},
+            {"id": "54014080", "nombre": "Salto Encantado"},
+            {"id": "54021005", "nombre": "Barrio del Lago"},
+            {"id": "54021010", "nombre": "Bonpland"},
+            {"id": "54021020", "nombre": "Candelaria"},
+            {"id": "54021030", "nombre": "Cerro Corá"},
+            {"id": "54021040", "nombre": "Loreto"},
+            {"id": "54021050", "nombre": "Mártires"},
+            {"id": "54021060", "nombre": "Profundidad"},
+            {"id": "54021070", "nombre": "Puerto Santa Ana"},
+            {"id": "54021080", "nombre": "Santa Ana"},
+            {"id": "54028005", "nombre": "Barrio Nuevo Garupa"},
+            {"id": "54028010", "nombre": "Garupá"},
+            {"id": "54028020", "nombre": "Nemesio Parma"},
+            {"id": "54028030", "nombre": "Posadas"},
+            {"id": "54028040", "nombre": "Posadas (Extensión)"},
+            {"id": "54035010", "nombre": "Barra Concepción"},
+            {"id": "54035020", "nombre": "Concepción de la Sierra"},
+            {"id": "54035030", "nombre": "La Corita"},
+            {"id": "54035040", "nombre": "Santa María"},
+            {"id": "54042010", "nombre": "Colonia Victoria"},
+            {"id": "54042020", "nombre": "Eldorado"},
+            {"id": "54042030", "nombre": "María Magdalena"},
+            {"id": "54042035", "nombre": "Nueva Delicia"},
+            {"id": "54042040", "nombre": "9 de Julio Kilómetro 28"},
+            {"id": "54042050", "nombre": "9 de Julio Kilómetro 20"},
+            {"id": "54042055", "nombre": "Pueblo Nuevo"},
+            {"id": "54042060", "nombre": "Puerto Mado"},
+            {"id": "54042070", "nombre": "Puerto Pinares"},
+            {"id": "54042080", "nombre": "Santiago de Liniers"},
+            {"id": "54042090", "nombre": "Valle Hermoso"},
+            {"id": "54042100", "nombre": "Villa Roulet"},
+            {"id": "54049010", "nombre": "Comandante Andresito"},
+            {"id": "54049020", "nombre": "Bernardo de Irigoyen"},
+            {"id": "54049025", "nombre": "Caburei"},
+            {"id": "54049030", "nombre": "Dos Hermanas"},
+            {"id": "54049040", "nombre": "Integración"},
+            {"id": "54049043", "nombre": "Piñalito Norte"},
+            {"id": "54049045", "nombre": "Puerto Andresito"},
+            {"id": "54049047", "nombre": "Puerto Deseado"},
+            {"id": "54049050", "nombre": "San Antonio"},
+            {"id": "54056010", "nombre": "El Soberbio"},
+            {"id": "54056020", "nombre": "Fracrán"},
+            {"id": "54056030", "nombre": "San Vicente"},
+            {"id": "54063010", "nombre": "Puerto Esperanza"},
+            {"id": "54063020", "nombre": "Puerto Libertad"},
+            {"id": "54063030", "nombre": "Puerto Iguazú"},
+            {"id": "54063035", "nombre": "Villa Cooperativa"},
+            {"id": "54063040", "nombre": "Colonia Wanda"},
+            {"id": "54070010", "nombre": "Almafuerte"},
+            {"id": "54070020", "nombre": "Arroyo del Medio"},
+            {"id": "54070030", "nombre": "Caá - Yarí"},
+            {"id": "54070040", "nombre": "Cerro Azul"},
+            {"id": "54070050", "nombre": "Dos Arroyos"},
+            {"id": "54070060", "nombre": "Gobernador López"},
+            {"id": "54070070", "nombre": "Leandro N. Alem"},
+            {"id": "54070080", "nombre": "Olegario V. Andrade"},
+            {"id": "54070090", "nombre": "Villa Libertad"},
+            {"id": "54077010", "nombre": "Capioví"},
+            {"id": "54077015", "nombre": "Capioviciño"},
+            {"id": "54077020", "nombre": "El Alcázar"},
+            {"id": "54077030", "nombre": "Garuhapé"},
+            {"id": "54077040", "nombre": "Mbopicuá"},
+            {"id": "54077050", "nombre": "Puerto Leoni"},
+            {"id": "54077060", "nombre": "Puerto Rico"},
+            {"id": "54077070", "nombre": "Ruiz de Montoya"},
+            {"id": "54077080", "nombre": "San Alberto"},
+            {"id": "54077090", "nombre": "San Gotardo"},
+            {"id": "54077100", "nombre": "San Miguel"},
+            {"id": "54077110", "nombre": "Villa Akerman"},
+            {"id": "54077120", "nombre": "Villa Urrutia"},
+            {"id": "54084003", "nombre": "Barrio Cuatro Bocas"},
+            {"id": "54084005", "nombre": "Barrio Guatambu"},
+            {"id": "54084007", "nombre": "Bario Ita"},
+            {"id": "54084010", "nombre": "Caraguatay"},
+            {"id": "54084020", "nombre": "Laharrague"},
+            {"id": "54084030", "nombre": "Montecarlo"},
+            {"id": "54084040", "nombre": "Piray Kilómetro 18"},
+            {"id": "54084050", "nombre": "Puerto Piray"},
+            {"id": "54084060", "nombre": "Tarumá"},
+            {"id": "54084070", "nombre": "Villa Parodi"},
+            {"id": "54091010", "nombre": "Colonia Alberdi"},
+            {"id": "54091013", "nombre": "Barrio Escuela 461"},
+            {"id": "54091017", "nombre": "Barrio Escuela 633"},
+            {"id": "54091020", "nombre": "Campo Ramón"},
+            {"id": "54091030", "nombre": "Campo Viera"},
+            {"id": "54091040", "nombre": "El Salto"},
+            {"id": "54091050", "nombre": "General Alvear"},
+            {"id": "54091060", "nombre": "Guaraní"},
+            {"id": "54091070", "nombre": "Los Helechos"},
+            {"id": "54091080", "nombre": "Oberá"},
+            {"id": "54091090", "nombre": "Panambí"},
+            {"id": "54091100", "nombre": "Panambí Kilómetro 8"},
+            {"id": "54091105", "nombre": "Panambi Kilómetro 15"},
+            {"id": "54091110", "nombre": "San Martín"},
+            {"id": "54091120", "nombre": "Villa Bonita"},
+            {"id": "54098005", "nombre": "Barrio Tungoil"},
+            {"id": "54098010", "nombre": "Colonia Polana"},
+            {"id": "54098020", "nombre": "Corpus"},
+            {"id": "54098030", "nombre": "Domingo Savio"},
+            {"id": "54098040", "nombre": "General Urquiza"},
+            {"id": "54098050", "nombre": "Gobernador Roca"},
+            {"id": "54098060", "nombre": "Helvecia"},
+            {"id": "54098070", "nombre": "Hipólito Yrigoyen"},
+            {"id": "54098080", "nombre": "Jardín América"},
+            {"id": "54098090", "nombre": "Oasis"},
+            {"id": "54098100", "nombre": "Roca Chica"},
+            {"id": "54098110", "nombre": "San Ignacio"},
+            {"id": "54098120", "nombre": "Santo Pipó"},
+            {"id": "54105010", "nombre": "Florentino Ameghino"},
+            {"id": "54105020", "nombre": "Itacaruaré"},
+            {"id": "54105030", "nombre": "Mojón Grande"},
+            {"id": "54105040", "nombre": "San Javier"},
+            {"id": "54112010", "nombre": "Cruce Caballero"},
+            {"id": "54112020", "nombre": "Paraíso"},
+            {"id": "54112030", "nombre": "Piñalito Sur"},
+            {"id": "54112040", "nombre": "San Pedro"},
+            {"id": "54112050", "nombre": "Tobuna"},
+            {"id": "54119010", "nombre": "Alba Posse"},
+            {"id": "54119020", "nombre": "Alicia Alta"},
+            {"id": "54119025", "nombre": "Alicia Baja"},
+            {"id": "54119030", "nombre": "Colonia Aurora"},
+            {"id": "54119040", "nombre": "San Francisco de Asís"},
+            {"id": "54119050", "nombre": "Santa Rita"},
+            {"id": "54119060", "nombre": "25 de Mayo"}];
+
+
+
+
+            /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+            autocomplete(document.getElementById("myInput"), countries);
+            function buscar() {
+                let localidadid = searchByKey(countries, "nombre", document.getElementById("myInput").value)
+                if (localidadid == null) {
+                    searchByKeyObra(document.getElementById("myInput").value)
+                } else {
+                    fetch(`https://apis.datos.gob.ar/georef/api/localidades-censales?id=${localidadid}&campos=centroide&max=150`)
+                        .then(response => response.json())
+                        .then(data => {
+                            map.flyTo({
+                                center: [Object.values(data)[2][0]["centroide"]["lon"], Object.values(data)[2][0]["centroide"]["lat"]],
+                                essential: true // this animation is considered essential with respect to prefers-reduced-motion
+                            });
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+            };
+
+            function fly(long, lat) {
+
+
+                map.flyTo({
+                    center: [long, lat],
+                    essential: true // this animation is considered essential with respect to prefers-reduced-motion
+                });
+            };
+
+            const urljsonpol = "{{ url_for('geojson_exptespol') }}"
+            const urljsonpun = "{{ url_for('geojson_exptespun') }}"
+
+
+    </script>
+</body>
+
+</html>

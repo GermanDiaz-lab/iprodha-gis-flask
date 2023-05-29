@@ -1,0 +1,201 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <title>Aplicacion GIS</title>
+        <meta name="author" content="luckynvic@gmail.com">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='ext/customScroll/css/jquery.mCustomScrollbar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.default.css') }}">
+
+        <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic' rel='stylesheet' type='text/css'>
+	
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mapa.css') }}">
+
+
+
+	<!-- Modernizr JS -->
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+
+    </head>
+    <body>
+        <nav class="navbar navbar-default nav-fixed-top" role="navigation" id="app-nav-bar" >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Navegacion</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">GIS</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="browse.html">Explorar</a>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aplicacion<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Configuracion</a>
+                            </li>
+                            <li>
+                                <a href="#">Usuario</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Master<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Punto</a>
+                            </li>
+                            <li>
+                                <a href="#">Categoria</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="about.html">Mas Informacion</a>
+                    </li>
+
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">Usuario German</p></li>
+                    <li>
+                        <a href="login.html">Iniciar Sesion</a>
+                    </li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="map"></div>
+        <div class="visible-lg visible-md">
+            <div id="search-box">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="searchText">Buscar</label>
+                        <input type="text" class="form-control input-sm" id="searchText" placeholder="Search Ubicacion">
+                    </div>
+                    <button type="submit" class="btn btn-default btn-sm">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div id="sidemenu" class="well">
+                <div class="input-field col s4">
+                    <input id="desde_fecha" type="date" class="validate">
+                    <label for="desde_fecha">DESDE</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="hasta_fecha" type="date" class="validate">
+                    <label for="hasta_fecha">HASTA</label>
+                </div>
+                
+                <div class="btn-group btn-group-justified btn-group-sm">
+                    <a id="buscar_boton_info" class="btn btn-default"> <i class="glyphicon glyphicon-fullscreen"></i> Buscar </a>
+                </div>
+                <div class="divider10"></div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a>Ordenar por</a>
+                    </div>
+                </div>
+                <div class="list-group point-list-view">
+                    
+                    <a href="#"class="list-group-item point-item"> <h4 class="list-group-item-heading" >Ubicacion 3</h4>
+                    <p class="list-group-item-text">
+                        Ubicacion Direccion
+                    </p> </a>
+                </div>
+
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        <script src="{{ url_for('static', filename='js/jquery-1.10.2.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='ext/customScroll/js/jquery.mCustomScrollbar.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='ext/customScroll/js/jquery.mousewheel.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/application.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/encuestagps.js') }}"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+        <script src="{{ url_for('static', filename='js/leaflet/leaflet.js') }}"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='js/markerencuestas.js') }}"></script>  
+
+
+
+        <script>
+
+
+            var firebaseConfig = {
+
+            apiKey: "AIzaSyAQ0ZeQB2eeLambnVuoMJLN-fc02p4lKdQ",
+            authDomain: "iprodha-app.firebaseapp.com",
+            projectId: "iprodha-app",
+            storageBucket: "iprodha-app.appspot.com",
+            messagingSenderId: "42717497099",
+            appId: "1:42717497099:web:dd1ffb389b93554a4a040e",
+            measurementId: "G-EPYN7660SP"
+
+        };
+
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.firestore();
+        var storageRef = firebase.storage().ref();
+
+			
+
+
+
+			(function($) {
+
+				$(".point-list-view").mCustomScrollbar({
+					scrollButtons : {
+						enable : true
+					},
+					theme : 'dark-thick',
+					contentTouchScroll : true
+				});
+
+			})(jQuery);
+        </script>
+    </body>
+</html>

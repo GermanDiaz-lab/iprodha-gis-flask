@@ -1,0 +1,409 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Aplicacion GIS</title>
+    <meta name="author" content="luckynvic@gmail.com">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='ext/customScroll/css/jquery.mCustomScrollbar.css') }}">
+
+    <link
+        href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic'
+        rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mapa.css') }}">
+
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet">
+
+
+
+
+    <!-- Modernizr JS -->
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+
+    <style>
+        .map-overlay {
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            position: absolute;
+            width: 10%;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            z-index: 999999;
+        }
+
+        .map-overlay .map-overlay-inner {
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .map-overlay h2 {
+            line-height: 24px;
+            display: block;
+            margin: 0 0 10px;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        input {
+            border: 1px solid;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 16px;
+
+        }
+
+        input[type=text] {
+            background-color: #f1f1f1;
+            width: 100%;
+        }
+
+        html,
+        body,
+        .intro {
+            height: 100%;
+        }
+
+        table td,
+        table th {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        thead th {
+            color: #fff;
+        }
+
+        .card {
+            border-radius: .5rem;
+        }
+
+        .table-scroll {
+            border-radius: .5rem;
+        }
+
+        .table-scroll table thead th {
+            font-size: 1.25rem;
+        }
+
+        thead {
+            top: 0;
+            position: sticky;
+        }
+
+        .squaredisponible {
+            height: 15px;
+            width: 15px;
+            background-color: #2cb015;
+            margin-right: 10px;
+        }
+        .squarenodisponible {
+            height: 15px;
+            width: 15px;
+            background-color: #b01515;
+            margin-right: 10px;
+        }
+        .squarereservado {
+            height: 15px;
+            width: 15px;
+            background-color: #ecd70a;
+            margin-right: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="map">
+
+        <div class="map-overlay top">
+            <div class="map-overlay-inner">
+                <h5>Legenda:</h2>
+                <div class="row">
+                    <div class="col">Disponible:</div>
+                    <div class="col-md-2 squaredisponible"></div>
+                </div>
+                <div class="row">
+                    <div class="col">Reservado:</div>
+                    <div class="col-md-2 squarereservado"></div>
+                </div>
+                <div class="row">
+                    <div class="col">Vendido:</div>
+                    <div class="col-md-2 squarenodisponible"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalLabel">Lotes IG</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="editor">
+
+                    </div>
+                    <div class="modal-footer" id="modalfooter">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="{{ url_for('static', filename='js/application.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/leaflet/mapalotesig2.js') }}"></script>
+
+
+    <script>
+
+
+
+
+        var myModal = new bootstrap.Modal(document.getElementById('formModal'), {
+            keyboard: true
+        })
+        const urljson = "{{ url_for('geojson_ig2') }}";
+        const loteslista = {{ estadolotes| safe }};
+        const urlactualizar = {{ url_for("actualizarlotes") | tojson }};
+        const get_ids_by_estados = {{ url_for("get_ids_by_estados") | tojson }};
+
+
+        function buildFilter(arr) {
+            var filter = ['in', 'id'];
+
+            if (arr.length === 0) {
+                return filter;
+            }
+
+            for (var i = 0; i < arr.length; i += 1) {
+                filter.push(arr[i]);
+            }
+
+            return filter;
+        };
+
+        async function enviarCambios(loteid, lotesituacion, url) {
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    loteid: loteid,
+                    estado: String(lotesituacion),
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                fetch(`https://www.iprodha.misiones.gov.ar/sistema/php/servicios/comun1.php?ID=${result.dataestado}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        const obj = JSON.parse(data);
+                        var arr = [result.dataestado]
+                        if (obj[0][0].ESTADO_TER === "2") {
+                            getIdsByEstadosAndFiltroMapa(arr, "disponible", get_ids_by_estados);
+                        };
+                        if (obj[0][0].ESTADO_TER === "3") {
+                            getIdsByEstadosAndFiltroMapa(arr, "pendiente", get_ids_by_estados);
+                        };
+                        if (obj[0][0].ESTADO_TER === "4") {
+                            getIdsByEstadosAndFiltroMapa(arr, "nodisponible", get_ids_by_estados);
+                        };
+                    })
+                    .catch(error => console.error(error));
+            } else {
+                console.error(`Error: ${result.message}`);
+            }
+        }
+
+        function chunkArray(array, chunkSize) {
+            const chunks = [];
+            for (let i = 0; i < array.length; i += chunkSize) {
+                chunks.push(array.slice(i, i + chunkSize));
+            }
+            return chunks;
+        }
+
+        function getMaxIdsPerRequest(baseUrl) {
+            const maxUrlLength = 2000;
+            const maxIdLength = 10; // Assuming a maximum of 10 characters per ID
+            const delimiterLength = 1; // The length of the delimiter, which is a comma in this case
+            const maxIdPlusDelimiterLength = maxIdLength + delimiterLength;
+            return Math.floor((maxUrlLength - baseUrl.length) / maxIdPlusDelimiterLength);
+        }
+        var iprodhaResponse = [];
+
+        async function getProductsByIdsFromFlask(data) {
+            const ids = data.map(item => item.estado);
+            const baseUrl = 'https://www.iprodha.misiones.gov.ar/sistema/php/servicios/comun1.php?ID=';
+            const maxIdsPerRequest = getMaxIdsPerRequest(baseUrl);
+
+            const idChunks = chunkArray(ids, maxIdsPerRequest);
+            const allProducts = [];
+
+            for (const idChunk of idChunks) {
+                const idsStr = idChunk.join(',');
+                const url = `${baseUrl}${idsStr}`;
+
+                if (url.length <= 2000) {
+                    try {
+                        const response = await fetch(url);
+                        console.log('Response:', response);
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error ${response.status}`);
+                        }
+
+                        const products = await response.json();
+                        console.log('Products from current request:', products);
+                        allProducts.push(...products);
+                    } catch (error) {
+                        console.error('Error fetching products by IDs from Flask app:', error);
+                    }
+                } else {
+                    console.error('URL length exceeds 2000 characters');
+                }
+            }
+            iprodhaResponse = iprodhaResponse.concat(allProducts);
+
+        }
+
+        async function processLotesLista(lista) {
+            await getProductsByIdsFromFlask(lista);
+
+            var estado4 = [];
+            var estado3 = [];
+            var estado2 = [];
+
+            for (let i = 0; i < iprodhaResponse.length; i++) {
+                const item = iprodhaResponse[i][0];
+                if (item.ESTADO_TER === "4") {
+                    estado4.push(item.ID);
+                } else if (item.ESTADO_TER === "3") {
+                    estado3.push(item.ID);
+                } else if (item.ESTADO_TER === "2") {
+                    estado2.push(item.ID);
+                }
+            }
+
+            var filtro4 = [];
+            var filtro3 = [];
+            var filtro2 = [];
+
+            if (estado4.length !== 0) {
+                await getIdsByEstadosAndFiltroMapa(estado4, "nodisponible", get_ids_by_estados);
+            }
+            if (estado3.length !== 0) {
+                await getIdsByEstadosAndFiltroMapa(estado3, "pendiente", get_ids_by_estados);
+            }
+            if (estado2.length !== 0) {
+                await getIdsByEstadosAndFiltroMapa(estado2, "disponible", get_ids_by_estados);
+            }
+        }
+
+        var filtro4 = [];
+        var filtro3 = [];
+        var filtro2 = [];
+
+        async function getIdsByEstadosAndFiltroMapa(estados, situacion, url) {
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    estados: estados
+                })
+            });
+
+            const result = await response.json();
+            console.log(result);
+
+            if (response.ok) {
+                console.log('IDs:', result.ids);
+                if (situacion === "disponible") {
+                    filtro2 = filtro2.concat(result.ids);
+                    map.setFilter('ig2disponible', buildFilter(filtro2));
+                }
+                if (situacion === "pendiente") {
+                    filtro3 = filtro3.concat(result.ids);
+                    map.setFilter('ig2pendiente', buildFilter(filtro3));
+                }
+                if (situacion === "nodisponible") {
+                    filtro4 = filtro4.concat(result.ids);
+                    map.setFilter('ig2nodisponible', buildFilter(filtro4));
+                }
+            } else {
+                console.error(`Error: ${result.error}`);
+            }
+        };
+
+
+
+
+    </script>
+
+</body>
+
+</html>

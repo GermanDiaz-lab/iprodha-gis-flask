@@ -1,0 +1,246 @@
+{% extends "basesociales.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<!-- top nav -->
+<nav class="z-depth-0">
+    <div class="nav-wrapper container">
+        <a href="/">IPRODHA<span>SOCIALES</span></a>
+        <span class="right grey-text text-darken-1">
+            <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+        </span>
+    </div>
+</nav>
+
+<!-- side nav -->
+<ul id="side-menu" class="sidenav side-menu">
+    <li><a class="subheader">IPRODHASOCIALES</a></li>
+    <li><a href="/" class="waves-effect">Home</a></li>
+    <li><a href="/pages/about.html" class="waves-effect">Informacion</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a href="/pages/contact.html" class="waves-effect">
+            <i class="material-icons">mail_outline</i>Contacto</a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <div class="googlelogindiv center" id="login">
+    </div>
+    <div class="googlelogoutdiv center" id="logout">
+    </div>
+</ul>
+
+
+
+<div class="row">
+    <div class="input-field col s4">
+        <input id="desde_fecha" type="date" class="validate">
+        <label for="desde_fecha">DESDE</label>
+    </div>
+    <div class="input-field col s4">
+        <input id="hasta_fecha" type="date" class="validate">
+        <label for="hasta_fecha">HASTA</label>
+    </div>
+    <div class="col s2">
+        <a id="buscar_boton_info" class="previous" style="text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;">BUSCAR</a>
+    </div>
+</div>
+
+<div class="col s12">
+    <div class="gistablainfo">
+        <input type="text" id="myInput" onkeyup="filtro()" placeholder="Buscar por Usuario.." title="Usuario">
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>DNI TITULAR</th>
+                    <th>NOMBRE TITULAR</th>
+                    <th>LEGAJO</th>
+                    <th>FECHA DE CARGA</th>
+                    <th>LATITUD</th>
+                    <th>LONGITUD</th>
+                    <th>USUARIO</th>
+                    <th>INFORME</th>
+                </tr>
+            </thead>
+            <tbody id="fila_tabla">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content informes">
+
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+</div>
+
+
+<div id="numero_de_miembros"></div>
+
+
+
+
+{% endblock %}
+
+{% block script %}
+
+
+<script>
+
+    const fila = document.getElementById("fila_tabla");
+
+    const desde = document.getElementById("desde_fecha");
+    const hasta = document.getElementById("hasta_fecha");
+
+    const firebaseConfig = {
+                apiKey: "AIzaSyDngCeALVXLbWPzOK2rY6Ht9SPXQF5q740",
+                authDomain: "iprodha-8c9c2.firebaseapp.com",
+                projectId: "iprodha-8c9c2",
+                storageBucket: "iprodha-8c9c2.appspot.com",
+                messagingSenderId: "450001531900",
+                appId: "1:450001531900:web:5275f5036adb0d25c2f879",
+                measurementId: "G-NKB1K9KJS8"
+            };
+
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            const db = firebase.firestore();
+            var storageRef = firebase.storage().ref();
+
+    document
+        .getElementById("buscar_boton_info")
+        .addEventListener("click", buscar_x_fecha);
+
+
+    // function buscar_x_fecha() {
+    //     removeElementsById("fila_tabla");
+    //     let timestampdesde = Math.floor(new Date(desde.value).getTime() / 1000); // Convert to seconds
+    //     let timestamphasta = Math.floor(new Date(hasta.value).getTime() / 1000); // Convert to seconds
+    //     const url = getUploadUrl();
+    //     let data = {
+    //         "timestampdesde": timestampdesde,
+    //         "timestamphasta": timestamphasta,
+    //     };
+    //     console.log(data);
+    //     fetch(url, {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(data),
+    //     }).then(respuesta => respuesta.json()).then((data) => {
+    //         console.log(data);
+    //         for (let i = 0; i < data.length; i++) {
+    //             renderTablaInfo(data[i]);
+    //         }
+    //     })
+    // };
+
+    document
+        .getElementById("buscar_boton_info")
+        .addEventListener("click", buscar_x_fecha);
+
+    function buscar_x_fecha() {
+        removeElementsById("fila_tabla");
+
+        let timestampdesde = new Date(desde.value);
+        let timestamphasta = new Date(hasta.value);
+
+        db.collection("informes")
+            .where("serverdate", ">=", timestampdesde)
+            .where("serverdate", "<=", timestamphasta)
+            .orderBy("serverdate")
+            .onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === "added") {
+                        //agregar documento
+                        renderTablaInfo(change.doc.data(), change.doc.id);
+                    }
+                    if (change.type === "removed") {
+                        //eliminar documento
+                    }
+                });
+            });
+    };
+
+
+    function removeElementsById(id) {
+
+        const elements = document.getElementById(id);
+
+        while (elements.children.length > 0) {
+            elements.children[0].parentNode.removeChild(elements.children[0]);
+        }
+    };
+
+    const renderTablaInfo = (data, id) => {
+
+        let htmlfilagis = `
+      <tr>
+        <td>${data.titulardni}</td>
+        <td>${data.titular}</td>
+        <td>${data.legajo}</td>
+        <td>${data.fecha}</td>
+        <td>${data.informelatitud}</td>
+        <td>${data.informelongitud}</td>
+        <td>${data.usuario}</td>
+        <td><a class="waves-effect waves-light btn modal-trigger" href="/informe/${id}">Modal</a></td>
+      </tr>
+    `;
+
+        fila.innerHTML += htmlfilagis;
+    };
+
+
+    function filtro() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[6];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+
+    // TODO: Add SDKs for Firebase products that you want to use
+
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+    // Your web app's Firebase configuration
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // nav menu
+        const elems = document.querySelectorAll(".modal");
+        M.Sidenav.init(elems);
+    });
+
+
+</script>
+
+{% endblock %}

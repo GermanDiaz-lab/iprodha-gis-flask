@@ -1,0 +1,50 @@
+<!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Comunidad</h1>
+        <img src="{{ url_for('static', filename='assets/img/BIM-logo.png') }}" alt="">
+        <img src="{{ url_for('static', filename='assets/img/misionesLogo.webp') }}" alt="">
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/" class="active">Inicio</a></li>
+          <li class="dropdown"><a href="#"><span>Sobre CBIM</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="/sobrecbim">Objetivos</a></li>
+              <li><a href="/qhcb">Que hace Comunidad BIM</a></li>
+              <li><a href="/quien">Quienes somos</a></li>
+              <li><a href="/linea">Lineas de accion</a></li>
+            </ul>
+          </li>
+          <li><a href="/">Noticias</a></li>
+          <li><a href="/geobim">GeoBim</a></li>
+          <li class="dropdown"><a href="#"><span>Mapas GIS</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="/visualizador">Obras</a></li>
+              <li class="dropdown"><a href="#"><span>GeoNode</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  <li><a href="#">Capa1</a></li>
+                  <li><a href="#">Capa2</a></li>
+                  <li><a href="#">Capa3</a></li>
+                  <li><a href="#">Capa4</a></li>
+                  <li><a href="#">Capa5</a></li>
+                </ul>
+              </li>
+                <li><a href="/mapavisitas">Sociales</a></li>
+                <li><a href="/mapaarreglomicasa">Arreglo Mi Casa</a></li>
+                <li><a href="/gisapp">Fotos de Obras</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->

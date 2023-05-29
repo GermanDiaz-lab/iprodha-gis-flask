@@ -1,0 +1,993 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IPRODHA SOCIALES</title>
+    <!-- materialize icons, css & js -->
+    <link type="text/css" href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/sociales/materialize.min.js') }}"></script>
+    <!-- ios support -->
+    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+    <meta name="theme-color" content="#FFE1C4">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        @media print {
+            #ghostery-tracker-tally {
+                display: none !important
+            }
+        }
+
+        /* colours */
+        :root {
+            --primary: #3f3e3e;
+            --secondary: #d16b21;
+            --title: #FF8816;
+        }
+
+
+
+        form .input-field {
+            margin-top: 30px;
+        }
+
+
+        label.cameraButton {
+            display: inline-block;
+            margin: 1em 0;
+            text-align: center;
+            letter-spacing: .5px;
+            color: #ffffff;
+            /* Styles to make it look like a button */
+            padding: 0.5em;
+            border: 2px solid #666;
+            border-color: #EEE #CCC #CCC #EEE;
+            background-color: #26a69a;
+            position: relative;
+        }
+
+
+        /* This is the part that actually hides the 'Choose file' text box for camera inputs */
+        label.cameraButton input[accept*="image"] {
+            display: none;
+        }
+
+
+
+        h5 {
+            text-align: center;
+        }
+
+
+        li.odd {
+            background-color: #ffffff;
+            font-size: medium;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        li.even {
+            background-color: #ffffff;
+            font-size: medium;
+
+        }
+
+        H6 {
+            text-align: center;
+            font-size: medium;
+        }
+
+        li a {
+            font-family: 'Arial Narrow';
+        }
+
+
+        .i0 {
+            display: none;
+        }
+
+        .i1 {
+            display: none;
+        }
+
+        .i2 {
+            display: none;
+        }
+
+        .i3 {
+            display: none;
+        }
+
+        .i4 {
+            display: none;
+        }
+
+        .i5 {
+            display: none;
+        }
+
+        .i6 {
+            display: none;
+        }
+
+        .i7 {
+            display: none;
+        }
+
+        .i8 {
+            display: none;
+        }
+
+        .i9 {
+            display: none;
+        }
+
+        .i10 {
+            display: none;
+        }
+
+        .i11 {
+            display: none;
+        }
+
+        .i12 {
+            display: none;
+        }
+
+        .i13 {
+            display: none;
+        }
+
+        .i14 {
+            display: none;
+        }
+
+        .collection {
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0px 1px 3px rgba(90, 90, 90, 0.1);
+            grid-template-columns: 2fr 6fr 1fr;
+        }
+
+        .collection .collection-item {
+            line-height: normal;
+        }
+
+        .collection.with-header .collection-item {
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        .informe {
+            margin-bottom: 0px;
+        }
+
+        html {
+            line-height: 1.5;
+        }
+
+        /* Styles go here */
+
+        .page-header,
+        .page-header-space {
+            height: 50px;
+        }
+
+        .page-footer,
+        .page-footer-space {
+            height: 50px;
+
+        }
+
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+
+            /* for demo */
+        }
+
+        .page-header {
+            position: fixed;
+            top: 0mm;
+            width: 100%;
+
+        }
+
+        .firma {
+            width: auto;
+            height: 250px;
+            /* -webkit-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            transform: rotate(270deg); */
+     }
+
+        .page {
+            page-break-after: always;
+        }
+
+        @page {
+            margin: 10mm 5mm 10mm 0mm;
+        }
+
+        @media print {
+            thead {
+                display: table-header-group;
+            }
+
+
+            body {
+                margin: 0;
+            }
+
+            .no-print,
+            .no-print * {
+                display: none !important;
+                visibility: hidden;
+            }
+
+            .hiddendiv,
+            hiddendiv * {
+                display: none !important;
+                height: 0;
+            }
+        }
+
+        table {
+            page-break-inside: auto;
+        }
+
+        td {
+            border: 0px solid white;
+        }
+
+        tr {
+            page-break-inside: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="page-header" style="text-align: center">
+        <div class="row informe valign-wrapper">
+            <div class="col-2">
+                <img src="{{ url_for('static', filename='images/logoiprodha.jpg') }}" alt="" class="responsive-img"
+                    style="height:100%;">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col-10">
+                <span class="black-text" style="font-size: x-small;">
+                    “2023 – Año de la juventud para liderar el desarrollo sostenible y la economía del conocimiento; de
+                    la resiliencia ante cambios climáticos y de agricultura familiar como sistema productivo que
+                    garantiza la soberanía alimentaria” </span>
+            </div>
+        </div>
+    </div>
+
+
+    <table>
+
+        <thead>
+            <tr>
+                <td>
+                    <!--place holder for the fixed-position header-->
+                    <div class="page-header-space"></div>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <!--*** CONTENT GOES HERE ***-->
+                    <div class="page" style="padding-left: 25mm">
+                        
+                        <div class="container">
+                            <h6 class="centre" style="font-size: x-large; font-weight: 900;">INFORME SOCIO ECONOMICO Y FINANCIERO
+                                GERENCIA SOCIAL – DIRECCION DE TRABAJO DE CAMPO</h6>
+                        </div>
+                        <hr size="3" width="100%" color="black">
+                        <div class="card">
+                        <div class="row informe">
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.usuario != "" %}
+                                    <li class="odd">AGENTE IPRODHA: <span style="font-weight: normal; text-decoration: none;">{{ informe.usuario }}</span></li>
+                                    {% endif %}
+                                    {% if informe.exp != "" %}
+                                    <li class="odd">EXPTE Nº: <span style="font-weight: normal; text-decoration: none;">{{ informe.exp }}</span></li>
+                                    {% endif %}
+                                    {% if informe.nota != "" %}
+                                    <li class="odd">NOTA Nº: <span style="font-weight: normal; text-decoration: none;">{{ informe.nota }}</span></li>
+                                    {% endif %}
+                                    {% if informe.fecha != "" %}
+                                    <li class="odd">FECHA: <span style="font-weight: normal; text-decoration: none;">{{ informe.fecha }}</span></li>
+                                    {% endif %}
+                                    {% if informe.localidad != "" %}
+                                    <li class="odd">LOCALIDAD: <span style="font-weight: normal; text-decoration: none;">{{ informe.localidad }}</span></li>
+                                    {% endif %}
+                                    {% if informe.legajo != "" %}
+                                    <li class="odd">LEGAJO CR: <span style="font-weight: normal; text-decoration: none;">{{ informe.legajo }}</span></li>
+                                    {% endif %}
+                                    {% if informe.titulo != "" %}
+                                    <li class="odd">TITULO: <span style="font-weight: normal; text-decoration: none;">{{ informe.titulo }}</span></li>
+                                    {% endif %}
+                                    {% if informe.sithab != "" %}
+                                    <li class="odd">SITUACION HAB.: <span style="font-weight: normal; text-decoration: none;">{{ informe.sithab }}</span></li>
+                                    {% endif %}
+                                    {% if informe.identviv != "" %}
+                                    <li class="odd">IDENTIFICACION DE LA VIVIENDA: <span style="font-weight: normal; text-decoration: none;">{{ informe.identviv }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ampliacion != "" %}
+                                    <li class="odd">AMPLIACION: <span style="font-weight: normal; text-decoration: none;">{{ informe.ampliacion }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.sitjur != "" %}
+                                    <li class="odd">SIT. JURIDICA: <span style="font-weight: normal; text-decoration: none;">{{ informe.sitjur }}</span></li>
+                                    {% endif %}
+                                    {% if informe.estadodeud != "" %}
+                                    <li class="odd">ESTADO DE DEUDA: <span style="font-weight: normal; text-decoration: none;">{{ informe.estadodeud }}</span></li>
+                                    {% endif %}
+                                    {% if informe.notdeud != "" %}
+                                    <li class="odd">NOTIFICACION DE DEUDA: <span style="font-weight: normal; text-decoration: none;">{{ informe.notdeud }}</span></li>
+                                    {% endif %}
+                                    {% if informe.titular != "" %}
+                                    <li class="odd">TITULAR: <span style="font-weight: normal; text-decoration: none;">{{ informe.titular }}</span></li>
+                                    {% endif %}
+                                    {% if informe.titulardni != "" %}
+                                    <li class="odd">TITULAR DNI Nº: <span style="font-weight: normal; text-decoration: none;">{{ informe.titulardni }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ocupante != "" %}
+                                    <li class="odd">OCUPANTE: <span style="font-weight: normal; text-decoration: none;">{{ informe.ocupante }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ocupantedni != "" %}
+                                    <li class="odd">OCUPANTE DNI Nº: <span style="font-weight: normal; text-decoration: none;">{{ informe.ocupantedni }}</span></li>
+                                    {% endif %}
+                                    {% if informe.residedesde != "" %}
+                                    <li class="odd">RESIDE DESDE: <span style="font-weight: normal; text-decoration: none;">{{ informe.residedesde }}</span></li>
+                                    {% endif %}
+                                    {% if informe.tipologia != "" %}
+                                    <li class="odd">TIPOLOGIA: <span style="font-weight: normal; text-decoration: none;">{{ informe.tipologia }}</span></li>
+                                    {% endif %}
+                                    {% if informe.estado != "" %}
+                                    <li class="odd">ESTADO: <span style="font-weight: normal; text-decoration: none;">{{ informe.estado }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row informe">
+                            {% if informe.observacion != "" %}
+                            <p>OBSERVACION: <span style="font-weight: normal; text-decoration: none;">{{ informe.observacion }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="row informe">
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.antecedenteiprodha != "" %}
+                                    <li class="odd">ANTECEDENTES IPRODHA: <span style="font-weight: normal; text-decoration: none;">{{ informe.antecedenteiprodha }}</span></li>
+                                    {% endif %}
+                                    {% if informe.antecedenteviv != "" %}
+                                    <li class="odd">ANTECEDENTES VIVIENDA IPRODHA: <span style="font-weight: normal; text-decoration: none;">{{ informe.antecedenteviv }}</span></li>
+                                    {% endif %}
+                                    {% if informe.antecedentemv != "" %}
+                                    <li class="odd">ANTECEDENTES PROGRAMA MEJOR VIVIR: <span style="font-weight: normal; text-decoration: none;">{{ informe.antecedentemv }}</span></li>
+                                    {% endif %}
+                                    {% if informe.antecedentevr != "" %}
+                                    <li class="odd">ANTECEDENTES VIVIENDA RURAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.antecedentevr }}</span></li>
+                                    {% endif %}
+                                    {% if informe.otrosinicio != "" %}
+                                    <li class="odd">OTROS: <span style="font-weight: normal; text-decoration: none;">{{ informe.otrosinicio }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.antecedentearreglo != "" %}
+                                    <li class="odd">ANTECEDENTES ARREGLO MI CASA: <span style="font-weight: normal; text-decoration: none;">{{ informe.antecedentearreglo }}</span></li>
+                                    {% endif %}
+                                    {% if informe.antecedentelote != "" %}
+                                    <li class="odd">ANTECEDENTES LOTES: <span style="font-weight: normal; text-decoration: none;">{{ informe.antecedentelote }}</span></li>
+                                    {% endif %}
+                                    {% if informe.comoaccede != "" %}
+                                    <li class="odd">COMO ACCEDE A LA VIVIENDA: <span style="font-weight: normal; text-decoration: none;">{{ informe.comoaccede }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                        <hr size="3" width="100%" color="black">
+                        <h6 class="centre" style="font-size: x-large; font-weight: 900;">GRUPO FAMILIAR: según Estado Ocupacional</h6>
+                        <hr size="3" width="100%" color="black">
+                        <div class="card">
+                        <div class="row informe">
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.titulardni != "" %}
+                                    <li class="odd">D N I: <span style="font-weight: normal; text-decoration: none;">{{ informe.titulardni }}</span></li>
+                                    {% endif %}
+                                    {% if informe.dniconyuge != "" %}
+                                    <li class="odd">D.N.I. CÓNYUGE: <span style="font-weight: normal; text-decoration: none;">{{ informe.dniconyuge }}</span></li>
+                                    {% endif %}
+                                    {% if informe.dnihijos != "" %}
+                                    <li class="odd">D.N.I. HIJO: <span style="font-weight: normal; text-decoration: none;">{{ informe.dnihijos }}</span></li>
+                                    {% endif %}
+                                    {% if informe.actadematrimonio != "" %}
+                                    <li class="odd">ACTA DE MATRIMONIO: <span style="font-weight: normal; text-decoration: none;">{{ informe.actadematrimonio }}</span></li>
+                                    {% endif %}
+                                    {% if informe.unionconvivencial != "" %}
+                                    <li class="odd">UNION CONVIVENCIAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.unionconvivencial }}</span></li>
+                                    {% endif %}
+                                    {% if informe.partidasnac != "" %}
+                                    <li class="odd">PARTIDAS NAC: <span style="font-weight: normal; text-decoration: none;">{{ informe.partidasnac }}</span></li>
+                                    {% endif %}
+                                    {% if informe.escolaridad != "" %}
+                                    <li class="odd">ESCOLARIDAD: <span style="font-weight: normal; text-decoration: none;">{{ informe.escolaridad }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.estadociviltitular != "" %}
+                                    <li class="odd">ESTADO CIVIL: <span style="font-weight: normal; text-decoration: none;">{{ informe.estadociviltitular }}</span></li>
+                                    {% endif %}
+                                    {% if informe.estadocivilconyuge != "" %}
+                                    <li class="odd">ESTADO CIVIL CÓNYUGE: <span style="font-weight: normal; text-decoration: none;">{{ informe.estadocivilconyuge }}</span></li>
+                                    {% endif %}
+                                    {% if informe.correoelectronico != "" %}
+                                    <li class="odd">CORREO ELECTRONICO: <span style="font-weight: normal; text-decoration: none;">{{ informe.correoelectronico }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row informe">
+                            {% if informe.observaciongrupo != "" %}
+                            <p>OBSERVACION: <span style="font-weight: normal; text-decoration: none;">{{ informe.observaciongrupo }}</p>
+                            {% endif %}
+                        </div>
+                        </div>
+                        <hr size="3" width="100%" color="black">
+                        <h6 class="centre" style="font-size: x-large; font-weight: 900;">SITUACION DE SALUD</h6>
+                        <hr size="3" width="100%" color="black">
+                        <div class="card">
+                        <div class="row informe">
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.obrasocial != "false" %}
+                                    <li class="odd">OBRA SOCIAL: SI</li>
+                                    {% endif %}
+                                    {% if informe.tienecud != "false" %}
+                                    <li class="odd">TIENE CUD: SI</li>
+                                    {% endif %}
+                                    {% if informe.vigenciacud != "" %}
+                                    <li class="odd">VIGENCIA: <span style="font-weight: normal; text-decoration: none;">{{ informe.vigenciacud }}</span></li>
+                                    {% endif %}
+                                    {% if informe.discapacidad != "" %}
+                                    <li class="odd">DISCAPACIDAD: <span style="font-weight: normal; text-decoration: none;">{{ informe.discapacidad }}</span></li>
+                                    {% endif %}
+                                    {% if informe.diagnostico != "" %}
+                                    <li class="odd">DIAGNOSTICO: <p>{{ informe.diagnostico }}</p>
+                                    </li>
+                                    {% endif %}
+                                    {% if informe.trasnsplantado != "false" %}
+                                    <li class="odd">TRANSPLANTADO: SI</li>
+                                    {% endif %}
+                                    {% if informe.carnet != "false" %}
+                                    <li class="odd">CARNET: SI</li>
+                                    {% endif %}
+                                    {% if informe.listadeespera != "false" %}
+                                    <li class="odd">LISTA DE ESPERA: SI</li>
+                                    {% endif %}
+                                    {% if informe.observaciontrasplante != "" %}
+                                    <li class="odd">OBSERVACIONES: <p>{{ informe.observaciontrasplante }}</p>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.silladeruedas != "false" %}
+                                    <li class="odd">SILLA DE RUEDAS: SI</li>
+                                    {% endif %}
+                                    {% if informe.muletas != "false" %}
+                                    <li class="odd">MULETAS: SI</li>
+                                    {% endif %}
+                                    {% if informe.andador != "false" %}
+                                    <li class="odd">ANDADOR: SI</li>
+                                    {% endif %}
+                                    {% if informe.otrosmovilidad != "" %}
+                                    <li class="odd">OTROS: <span style="font-weight: normal; text-decoration: none;">{{ informe.otrosmovilidad }}</span></li>
+                                    {% endif %}
+                                    {% if informe.observaciongrupo != "" %}
+                                    <li class="odd">OBSERVACION: <p>{{ informe.observaciongrupo }}</p>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        <hr class="html2pdf__page-break" size="3" width="100%" color="black">
+
+                        <h6 class="centre" style="font-size: x-large; font-weight: 900;">SITUACION ECONOMICA - FINANCIERA:</h6>
+                        <hr size="3" width="100%" color="black">
+                        <div class="card">
+                        <p id="result"></p>
+                        {% if informe.ingreso1 != "" %}
+                        <div class="row informe">
+                            <div class="col s4">
+                                <ul>
+
+                                    {% if informe.nombreingreso1 != "" %}
+                                    <li class="odd">NOMBRE: <span style="font-weight: normal; text-decoration: none;">{{ informe.nombreingreso1 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.telefono1 != "" %}
+                                    <li class="odd">TELEFONO: <span style="font-weight: normal; text-decoration: none;">{{ informe.telefono1 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.fechadelrecibo1 != "" %}
+                                    <li class="odd">FECHA DEL RECIBO: <span style="font-weight: normal; text-decoration: none;">{{ informe.fechadelrecibo1 }}</span></li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.categorialaboral1 != "" %}
+                                    <li class="odd">CATEGORIA LABORAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.categorialaboral1 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ingreso1 != "" %}
+                                    <li class="odd">INGRESOS: <span style="font-weight: normal; text-decoration: none;">${{ informe.ingreso1 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.lugar1 != "" %}
+                                    <li class="odd">LUGAR: <span style="font-weight: normal; text-decoration: none;">{{ informe.lugar1 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.ocupacion1 != "" %}
+                                    <li class="odd">OCUPACION: <span style="font-weight: normal; text-decoration: none;">{{ informe.ocupacion1 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.domicilio1 != "" %}
+                                    <li class="odd">DOMICILIO: <span style="font-weight: normal; text-decoration: none;">{{ informe.domicilio1 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if informe.ingreso2 != "" %}
+                        <div class="row informe">
+                            <div class="col s4">
+                                <ul>
+
+                                    {% if informe.nombreingreso2 != "" %}
+                                    <li class="odd">NOMBRE: <span style="font-weight: normal; text-decoration: none;">{{ informe.nombreingreso2 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.telefono2 != "" %}
+                                    <li class="odd">TELEFONO: <span style="font-weight: normal; text-decoration: none;">{{ informe.telefono2 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.fechadelrecibo2 != "" %}
+                                    <li class="odd">FECHA DEL RECIBO: <span style="font-weight: normal; text-decoration: none;">{{ informe.fechadelrecibo2 }}</span></li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.categorialaboral2 != "" %}
+                                    <li class="odd">CATEGORIA LABORAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.categorialaboral2 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ingreso2 != "" %}
+                                    <li class="odd">INGRESOS: <span style="font-weight: normal; text-decoration: none;">${{ informe.ingreso2 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.lugar2 != "" %}
+                                    <li class="odd">LUGAR: <span style="font-weight: normal; text-decoration: none;">{{ informe.lugar2 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.ocupacion2 != "" %}
+                                    <li class="odd">OCUPACION: <span style="font-weight: normal; text-decoration: none;">{{ informe.ocupacion2 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.domicilio2 != "" %}
+                                    <li class="odd">DOMICILIO: <span style="font-weight: normal; text-decoration: none;">{{ informe.domicilio2 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if informe.ingreso3 != "" %}
+                        <div class="row informe">
+                            <div class="col s4">
+                                <ul>
+
+                                    {% if informe.nombreingreso3 != "" %}
+                                    <li class="odd">NOMBRE: <span style="font-weight: normal; text-decoration: none;">{{ informe.nombreingreso3 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.telefono3 != "" %}
+                                    <li class="odd">TELEFONO: <span style="font-weight: normal; text-decoration: none;">{{ informe.telefono3 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.fechadelrecibo3 != "" %}
+                                    <li class="odd">FECHA DEL RECIBO: <span style="font-weight: normal; text-decoration: none;">{{ informe.fechadelrecibo3 }}</span></li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.categorialaboral3 != "" %}
+                                    <li class="odd">CATEGORIA LABORAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.categorialaboral3 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ingreso3 != "" %}
+                                    <li class="odd">INGRESOS: <span style="font-weight: normal; text-decoration: none;">${{ informe.ingreso3 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.lugar3 != "" %}
+                                    <li class="odd">LUGAR: <span style="font-weight: normal; text-decoration: none;">{{ informe.lugar3 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.ocupacion3 != "" %}
+                                    <li class="odd">OCUPACION: <span style="font-weight: normal; text-decoration: none;">{{ informe.ocupacion3 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.domicilio3 != "" %}
+                                    <li class="odd">DOMICILIO: <span style="font-weight: normal; text-decoration: none;">{{ informe.domicilio3 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if informe.ingreso4 != "" %}
+                        <div class="row informe">
+                            <div class="col s4">
+                                <ul>
+
+                                    {% if informe.nombreingreso4 != "" %}
+                                    <li class="odd">NOMBRE: <span style="font-weight: normal; text-decoration: none;">{{ informe.nombreingreso4 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.telefono4 != "" %}
+                                    <li class="odd">TELEFONO: <span style="font-weight: normal; text-decoration: none;">{{ informe.telefono4 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.fechadelrecibo4 != "" %}
+                                    <li class="odd">FECHA DEL RECIBO: <span style="font-weight: normal; text-decoration: none;">{{ informe.fechadelrecibo4 }}</span></li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.categorialaboral4 != "" %}
+                                    <li class="odd">CATEGORIA LABORAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.categorialaboral4 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ingreso4 != "" %}
+                                    <li class="odd">INGRESOS: <span style="font-weight: normal; text-decoration: none;">${{ informe.ingreso4 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.lugar4 != "" %}
+                                    <li class="odd">LUGAR: <span style="font-weight: normal; text-decoration: none;">{{ informe.lugar4 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.ocupacion4 != "" %}
+                                    <li class="odd">OCUPACION: <span style="font-weight: normal; text-decoration: none;">{{ informe.ocupacion4 }}</span></li>
+                                    {% endif %}
+                                    {% if informe.domicilio4 != "" %}
+                                    <li class="odd">DOMICILIO: <span style="font-weight: normal; text-decoration: none;">{{ informe.domicilio4 }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="row informe">
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.principalpagador != "" %}
+                                    <li class="odd">PRINCIPAL PAGADOR: <span style="font-weight: normal; text-decoration: none;">{{ informe.principalpagador }}</span></li>
+                                    {% endif %}
+                                    {% if informe.catlaboralpagador != "" %}
+                                    <li class="odd">CATEGORIA LABORAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.catlaboralpagador }}</span></li>
+                                    {% endif %}
+                                    {% if informe.garante != "" %}
+                                    <li class="odd">GARANTE: <span style="font-weight: normal; text-decoration: none;">{{ informe.garante }}</span></li>
+                                    {% endif %}
+                                    {% if informe.catlaboralgarante != "" %}
+                                    <li class="odd">GARANTE CATEGORIA LABORAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.catlaboralgarante }}</span></li>
+                                    {% endif %}
+                                    {% if informe.declaracionjurada != "" %}
+                                    <li class="odd">DECLARACION JURADA: <span style="font-weight: normal; text-decoration: none;">{{ informe.declaracionjurada }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.dnipagador != "" %}
+                                    <li class="odd">PAGADOR DNI: <span style="font-weight: normal; text-decoration: none;">{{ informe.dnipagador }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ingresospagador != "" %}
+                                    <li class="odd">PAGADOR INGRESOS: <span style="font-weight: normal; text-decoration: none;">${{ informe.ingresospagador }}</span></li>
+                                    {% endif %}
+                                    {% if informe.dnigarante != "" %}
+                                    <li class="odd">GARANTE DNI: <span style="font-weight: normal; text-decoration: none;">{{ informe.dnigarante }}</span></li>
+                                    {% endif %}
+                                    {% if informe.ingresosgarante != "" %}
+                                    <li class="odd">GARANTE INGRESOS: <span style="font-weight: normal; text-decoration: none;">${{ informe.ingresosgarante }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <p style="font-weight: 900; text-decoration: underline;">TITULAR:</p>
+                        <div class="row informe">
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.titularprestamos != "" %}
+                                    <li class="odd">PRESTAMOS: <span style="font-weight: normal; text-decoration: none;">{{ informe.titularprestamos }}</span></li>
+                                    {% endif %}
+                                    {% if informe.prestamomonto != "" %}
+                                    <li class="odd">MONTO: <span style="font-weight: normal; text-decoration: none;">{{ informe.prestamomonto }}</span></li>
+                                    {% endif %}
+                                    {% if informe.plazo != "" %}
+                                    <li class="odd">PLAZO: <span style="font-weight: normal; text-decoration: none;">{{ informe.plazo }}</span></li>
+                                    {% endif %}
+                                    {% if informe.consumomensual != "" %}
+                                    <li class="odd">CONSUMO MENSUAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.consumomensual }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <ul>
+                                    {% if informe.tarjetas != "" %}
+                                    <li class="odd">TARJETAS: <span style="font-weight: normal; text-decoration: none;">{{ informe.tarjetas }}</span></li>
+                                    {% endif %}
+                                    {% if informe.tipodetarjeta != "" %}
+                                    <li class="odd">TIPO DE TARJETAS: <span style="font-weight: normal; text-decoration: none;">{{ informe.tipodetarjeta }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <ul>
+                            {% if informe.observacionessiteco != "" %}
+                            <li class="odd">OBSERVACIONES: <p>{{ informe.observacionessiteco }}</p>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                        <hr width="100%" color="black">
+                        <h6 style="font-size: x-large; font-weight: 900;">SERVICIOS:</h6>
+                        <hr size="3" width="100%" color="black">
+                        <div class="card">
+                        <div class="row informe">
+                            <div class="col s4">
+                                <ul>
+
+                                    {% if informe.luz != "false" %}
+                                    <li class="odd">LUZ: SI</li>
+                                    {% endif %}
+                                    {% if informe.agua != "false" %}
+                                    <li class="odd">AGUA: SI</li>
+                                    {% endif %}
+                                    {% if informe.cable != "false" %}
+                                    <li class="odd">CABLE: SI</li>
+                                    {% endif %}
+                                    {% if informe.internet != "false" %}
+                                    <li class="odd">INTERNET: SI</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.luz != "false" %}
+                                    <li class="odd">MONTO MENSUAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.montoluz }}</span></li>
+                                    {% endif %}
+                                    {% if informe.agua != "false" %}
+                                    <li class="odd">MONTO MENSUAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.aguamonto }}</span></li>
+                                    {% endif %}
+                                    {% if informe.cable != "false" %}
+                                    <li class="odd">MONTO MENSUAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.cablemonto }}</span></li>
+                                    {% endif %}
+                                    {% if informe.internet != "false" %}
+                                    <li class="odd">MONTO MENSUAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.internetmonto }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s4">
+                                <ul>
+                                    {% if informe.luz != "false" %}
+                                    <li class="odd">{{ informe.luzformal }}</span></li>
+                                    {% endif %}
+                                    {% if informe.agua != "false" %}
+                                    <li class="odd">{{ informe.aguaformal }}</span></li>
+                                    {% endif %}
+                                    {% if informe.cable != "false" %}
+                                    <li class="odd">{{ informe.cableformal }}</span></li>
+                                    {% endif %}
+                                    {% if informe.internet != "false" %}
+                                    <li class="odd">{{ informe.internetformal }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% if informe.observacionesservicios != "" %}
+                        <div class="row informe">
+                            <div class="col s12">
+                                <ul>
+                                    <li class="odd">OBSERVACIONES: <p>{{ informe.observacionesservicios }}</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                        <hr class="html2pdf__page-break" size="3" width="100%" color="black">
+                        <div class="card">
+                        <div class="row informe valign-wrapper">
+                            <div class="col s12">
+                                <span class="black-text"
+                                    style="font-size: medium; font-weight: 900; text-decoration: underline;">
+                                    IMPORTANTE: </span>
+                                <span class="black-text" style="font-size: medium;">
+                                    LOS DATOS PROPORCIONADOS TIENEN CARACTER DE DECLARACION JURADA. LA PROSECUCION DEL
+                                    TRAMITE QUEDA SUJETA A LA PRESENTACION DE LA DOCUMENTACION SOLICITADA EN VISITA
+                                    DOMICILIARIA REALIZADA POR LA DIRECCION TRABAJO DE CAMPO.</span>
+                                <p>FIRMA ENTREVISTADO:</p>
+                            </div>
+                        </div>
+                        <div class="row informe">
+                            <div class="col s6">
+                                <img src={{ informe.link }} class="firma">
+                            </div>
+                        </div>
+                    </div>
+                        <hr size="3" width="100%" color="black">
+                        <h6 style="font-size: x-large; font-weight: 900;">CONCLUSION CUOTA MODALIDAD REGULARIZACION</h6>
+                        <hr size="3" width="100%" color="black">
+                        <div class="card">
+                        <div class="row informe">
+                            <div class="col s6">
+                                <p style="font-weight: 900; text-decoration: underline;">TIPO DE CUOTA:</p>
+                                <ul>
+                                    {% if informe.cuotasocial != "" %}
+                                    <li class="odd">CUOTA SOCIAL: <span style="font-weight: normal; text-decoration: none;">{{ informe.cuotasocial }}</span></li>
+                                    {% endif %}
+                                    {% if informe.cuotaprovisoria != "" %}
+                                    <li class="odd">CUOTA PROVISORIA: <span style="font-weight: normal; text-decoration: none;">{{ informe.cuotaprovisoria }}</span></li>
+                                    {% endif %}
+                                    {% if informe.cuotaestandar != "" %}
+                                    <li class="odd">CUOTA ESTANDAR: <span style="font-weight: normal; text-decoration: none;">{{ informe.cuotaestandar }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="col s6">
+                                <p style="font-weight: 900; text-decoration: underline;">MODALIDAD:</p>
+                                <ul>
+                                    {% if informe.planventa != "" %}
+                                    <li class="odd">PLAN VENTA: <span style="font-weight: normal; text-decoration: none;">{{ informe.planventa }}</span></li>
+                                    {% endif %}
+                                    {% if informe.planalquiler != "" %}
+                                    <li class="odd">PLAN ALQUILER: <span style="font-weight: normal; text-decoration: none;">{{ informe.planalquiler }}</span></li>
+                                    {% endif %}
+                                    {% if informe.otrosmodalidad != "" %}
+                                    <li class="odd">OTROS: <span style="font-weight: normal; text-decoration: none;">{{ informe.otrosmodalidad }}</span></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row informe">
+                            <div class="col s12">
+                                <ul>
+                                    {% if informe.plazopresentacion != "" %}
+                                    <li class="odd">PLAZO PRESENTACION DE DOCUMENTACION: <p>{{
+                                            informe.plazopresentacion }}</p>
+                                    </li>
+                                    {% endif %}
+                                    {% if informe.observacionesplazo != "" %}
+                                    <li class="odd">OBSERVACIONES: <p>{{ informe.observacionesplazo }}</p>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        <hr class="html2pdf__page-break" size="3" width="100%" color="black">
+                        <h6 style="font-size: x-large; font-weight: 900;">CONCLUSION FINAL: <p id="conclucion_final" style="font-size: medium; font-weight: normal;">{{ informe.conclusionfin }}</p>
+                        </h6>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <form class="form_conclusion no-print">
+        <div class="conclusionfinal container grey-text text-darken-1">
+            <div class="row informe">
+                <div class="input-field col s12">
+                    <textarea id="conclusionfin" type="text" class="materialize-textarea"
+                        style="height: 45px;"></textarea>
+                    <label for="conclusionfin">CONCLUSION FINAL</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-field center">
+            <button class="btn-small" id="boton_cargar">CARGAR CONCLUSION</button>
+        </div>
+    </form>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+
+    <script>
+
+        const ingresosLista = [{{ informe.ingreso1 }}, {{ informe.ingreso2 }}, {{ informe.ingreso3 }}, {{ informe.ingreso4 }},]
+
+        function sumStringFloatNumbers(numbers) {
+            let sum = 0;
+            for (let i = 0; i < numbers.length; i++) {
+                const floatNumber = parseFloat(numbers[i]);
+                if (!isNaN(floatNumber)) {
+                    sum += floatNumber;
+                }
+            }
+            return sum.toFixed(2);
+        }
+
+        const con = document.querySelector(".form_conclusion");
+
+        con.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            document.getElementById("boton_cargar").disabled = true;
+            const url = "{{ url_for('buscarinforme') }}";
+            let data = {
+                "id": "{{ informe.id|safe }}",
+                "conclusion": document.getElementById("conclusionfin").value,
+                "operacion": 'cargarconclusion',
+            };
+            fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            }).then(respuesta => {
+                console.log(respuesta.status)
+                if (respuesta.status == 200) {
+                    document.getElementById("conclucion_final").innerHTML = document.getElementById("conclusionfin").value;
+                    document.getElementById("boton_cargar").disabled = false;
+                };
+            })
+        });
+
+        // Run the function on window load
+        window.addEventListener("load", function () {
+
+            const result = sumStringFloatNumbers(ingresosLista);
+
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = `IMPORTE NETO TOTAL FORMAL PERCIBIDO: $${result}`;
+        });
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

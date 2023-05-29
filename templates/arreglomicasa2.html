@@ -1,0 +1,249 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title>Aplicacion GIS</title>
+    <meta name="author" content="luckynvic@gmail.com">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='ext/customScroll/css/jquery.mCustomScrollbar.css') }}">
+
+    <link
+        href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic'
+        rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mapa.css') }}">
+
+
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet">
+
+
+
+    <!-- Modernizr JS -->
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+
+    <style>
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        input {
+            border: 1px solid;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 16px;
+
+        }
+
+        input[type=text] {
+            background-color: #f1f1f1;
+            width: 100%;
+        }
+
+        html,
+        body,
+        .intro {
+            height: 100%;
+        }
+
+        table td,
+        table th {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        thead th {
+            color: #fff;
+        }
+
+        .card {
+            border-radius: .5rem;
+        }
+
+        .table-scroll {
+            border-radius: .5rem;
+        }
+
+        .table-scroll table thead th {
+            font-size: 1.25rem;
+        }
+
+        thead {
+            top: 0;
+            position: sticky;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="lmapa">
+        <div id="map">
+            <div>
+                <button type="button" class="btn mb-2 mb-md-0 btn-tertiary btn-block" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i
+                        class="bi bi-arrow-90deg-up"></i>TABLA DE ATRIBUTOS
+                </button>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample">
+            <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
+                style="position: relative; height: 300px">
+                <input type="text" id="filtroInput" onkeyup="filtro()" placeholder="Filtrar DNI.." title="DNI">
+                <table class="table table-striped mb-0" id="myTable">
+                    <thead style="background-color: #002d72;">
+                        <tr>
+                            <th scope="col">APELLIDO NOMBRE</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">LATITUD</th>
+                            <th scope="col">LONGITUD</th>
+                            <th scope="col">RESPONSABLE</th>
+                            <th scope="col">IR</th>
+                        </tr>
+                    </thead>
+                    <tbody id="columna">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/application.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='js/leaflet/leaflet.js') }}"></script>
+
+
+
+
+    <script>
+
+
+
+        function makeMarker(data) {
+
+            console.log(data[2], data[3])
+            const marker = new mapboxgl.Marker({
+                color: '#F84C4C' // color it red
+            }).setLngLat([data[3], data[2]]).setPopup(
+                new mapboxgl.Popup({offset: 25}) // add popups
+                    .setHTML(
+                        `<h4>Arreglo mi casa</h4>
+                        <p>
+                            <br>DNI: ${data[0]}<br>Nombre y Apellido: ${data[1]}<br>Latitud: ${data[2]}<br>Longitud: ${data[3]}<br>Municipio: ${data[4]}<br>Inspector Responsable: ${data[5]}
+                        </p>
+                        `
+                    )
+            ).addTo(map);
+
+
+
+        }
+
+        const exel_list = {{ exel|safe }}
+
+        window.onload = crearMapa(exel_list)
+
+        function crearMapa (exel_list) {
+                    console.log(exel_list);
+                    var htmltabla = ``;
+
+                    for (let i = 1; i < exel_list.length; i++) {
+                            makeMarker(exel_list[i])
+                            console.log(i)
+                            htmltabla += `
+                    <tr>
+                        <td>${exel_list[i][1]}</td>
+                        <td>${exel_list[i][0]}</td>
+                        <td>${exel_list[i][2]}</td>
+                        <td>${exel_list[i][3]}</td>
+                        <td>${exel_list[i][5]}</td>
+                        <td onclick="fly(${exel_list[i][3]}, ${exel_list[i][2]});">IR</td>
+                    </tr>
+                    `;
+
+
+                            document.querySelector("#columna").innerHTML = htmltabla;
+                        };
+
+        };
+
+        function filtro() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("filtroInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        };
+
+        function fly(long, lat) {
+
+
+            map.flyTo({
+                center: [long, lat],
+                essential: true // this animation is considered essential with respect to prefers-reduced-motion
+            });
+        };
+
+
+
+
+
+    </script>
+</body>
+
+</html>

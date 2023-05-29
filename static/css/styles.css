@@ -1,0 +1,253 @@
+/* colours */
+:root{
+  --primary: #3f3e3e;
+  --secondary: #d16b21;
+  --title: #FF8816;
+}
+
+/* layout styles */
+nav{
+  background: var(--primary);
+  border-bottom: 10px solid var(--secondary);
+}
+nav a{
+  text-transform: uppercase;
+  color: var(--title);
+}
+nav a span{
+  font-weight: bold;
+}
+nav .sidenav-trigger{
+  margin: 0;
+}
+
+/* recipe styles */
+.recipes{
+  margin-top: 20px;
+}
+.card-panel.recipe{
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+  display: grid;
+  grid-template-columns: 2fr 6fr 1fr;
+  grid-template-areas: "image details delete";
+  position: relative;
+}
+.recipe img{
+  grid-area: image;
+  max-width: 60px;
+}
+.recipe-details{
+  grid-area: details;
+  margin-top: 6px;
+}
+.recipe-delete{
+  grid-area: delete;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+.map-icon:link {
+  color: grey;
+  background-color: transparent;
+}
+
+.map-icon:visited {
+  color: grey;
+  background-color: transparent;
+}
+
+.recipe-delete i{
+  font-size: 18px;
+}
+.recipe-title{
+  font-weight: bold;
+}
+.recipe-ingredients{
+  font-size: 0.8em;
+}
+
+/* form-styles */
+.add-btn{
+  background: var(--title) !important;
+}
+input{
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+.side-form button{
+  background: var(--title);
+  box-shadow: 1px 1px 3px rgba(90,90,90,0.2);
+}
+form .input-field{
+  margin-top: 30px;
+}
+
+
+label.cameraButton {
+  display: inline-block;
+  margin: 1em 0;
+  text-align: center;
+  letter-spacing: .5px;
+  color: #ffffff;
+  /* Styles to make it look like a button */
+  padding: 0.5em;
+  border: 2px solid #666;
+  border-color: #EEE #CCC #CCC #EEE;
+  background-color: #26a69a;
+  position:relative;
+}
+
+/* Look like a clicked/depressed button */
+label.cameraButton:active {
+  border-color: #CCC #EEE #EEE #CCC;
+}
+
+/* This is the part that actually hides the 'Choose file' text box for camera inputs */
+label.cameraButton input[accept*="image"] {
+  display: none;
+}
+
+.previous {
+  background-color: var(--primary);
+  color: white;
+}
+
+.next {
+  background-color: var(--secondary);
+  color: white;
+}
+
+h5{  
+  text-align: center;
+ }
+
+.q1 {
+  display: block;
+}
+
+.q2 {
+  display: none;
+}
+
+.q3 {
+  display: none;
+}
+
+.q4 {
+  display: none;
+}
+
+.q5 {
+  display: none;
+}
+
+.q6 {
+  display: none;
+}
+
+.q7 {
+  display: none;
+}
+
+.q8 {
+  display: none;
+}
+
+.q9 {
+  display: none;
+}
+
+.q10 {
+  display: none;
+}
+
+.sidenav-close {
+  display: none;
+}
+
+.informe_cargados{
+  display: block;
+}
+
+li.odd{
+  background-color: #ffffff;
+  font-size: x-small;
+}
+li.even{
+  background-color: #ffffff;
+  font-size: x-small;
+
+}
+
+H6 { 
+  text-align: center;
+  font-size: small;
+ }
+
+ li a{
+   font-family: 'Arial Narrow';
+}
+
+
+.i0 {
+  display: none;
+}
+
+.i1 {
+  display: none;
+}
+
+.i2 {
+  display: none;
+}
+
+.i3 {
+  display: none;
+}
+
+.i4 {
+  display: none;
+}
+
+.i5 {
+  display: none;
+}
+
+.i6 {
+  display: none;
+}
+
+.i7 {
+  display: none;
+}
+
+.i8 {
+  display: none;
+}
+
+.i9 {
+  display: none;
+}
+
+.i10 {
+  display: none;
+}
+
+.i11 {
+  display: none;
+}
+
+.i12 {
+  display: none;
+}
+
+.i13 {
+  display: none;
+}
+
+.i14 {
+  display: none;
+}
+

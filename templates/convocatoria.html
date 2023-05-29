@@ -1,0 +1,2937 @@
+{% extends "basesociales.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+  <!-- top nav -->
+  <nav class="z-depth-0">
+    <div class="nav-wrapper container">
+      <a href="/">IPRODHA<span>SOCIALES</span></a>
+      <span class="right grey-text text-darken-1">
+        <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+      </span>
+    </div>
+  </nav>
+
+  <!-- side nav -->
+  <ul id="side-menu" class="sidenav side-menu">
+    <li><a class="subheader">IPRODHASOCIALES</a></li>
+    <li><a href="/" class="waves-effect">Home</a></li>
+    <li><a href="/pages/about.html" class="waves-effect">Informacion</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a href="/pages/contact.html" class="waves-effect">
+        <i class="material-icons">mail_outline</i>Contacto</a>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <div class="googlelogindiv center" id="login">
+    </div>
+    <div class="googlelogoutdiv center" id="logout">
+    </div>
+  </ul>
+
+  <div class="q1">
+    <div class="row">
+      <div class="col s12 m5">
+        <div class="card-panel red lighten-5">
+          <h5>Bienvenido.</h3>
+            <span>Para comenzar la encuesta de Regularización de vivienda IPRODHA precionar el boton con el signo +.
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form class="form_conv">
+    <div class="q2">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>INFORME CONVOCATORIA</h5>
+            <h5>GERENCIA SOCIAL – DIRECCION DE TRABAJO DE CAMPO – DIRECCION DE EMERGENCIA SOCIAL Y DIRECCION DE
+              ADJUDICACIONES</h5>
+            <div class="row">
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="usuario_offline">
+                    <option value="" disabled selected>AGENTE IPRODHA OFFLINE</option>
+                    <option value="Lic. Gonzalez Krindges Jorge">Lic. Gonzalez Krindges Jorge</option>
+                    <option value="Lic. Osorio Viviana">Lic. Osorio Viviana</option>
+                    <option value="Lic. Gomez Analia">Lic. Gomez Analia</option>
+                    <option value="Lic. Méndez Daniela">Lic. Méndez Daniela</option>
+                    <option value="Lic. Sena Marina">Lic. Sena Marina</option>
+                    <option value="Lic. Pineda Elisabeth">Lic. Pineda Elisabeth</option>
+                    <option value="Prof. Giménez Gustavo">Prof. Giménez Gustavo</option>
+                    <option value="Agte. Rodríguez Gabriela">Agte. Rodríguez Gabriela</option>
+                    <option value="Agte. Ortellado Griselda">Agte. Ortellado Griselda</option>
+                    <option value="Agte. Larrosa Liliana">Agte. Larrosa Liliana</option>
+                    <option value="Agte. Novak Isabel">Agte. Novak Isabel</option>
+                  </select>
+                  <label for="usuario_offline">AGENTE IPRODHA OFFLINE</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="expte" type="text" class="validate">
+                  <label for="expte">CONVOCATORIA Nº</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="notan" type="text" class="validate">
+                  <label for="notan">OBRA</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="barrio" type="text" class="validate" style="display:none; visibility:hidden;">
+                  <label for="barrio"></label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="adj" type="text" class="validate" style="display:none; visibility:hidden;">
+                  <label for="adj"></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="local" type="text" class="autocomplete">
+                  <label for="local">LOCALIDAD</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="tit" type="text" class="validate">
+                  <label for="tit">SORTEADO VIV. Nº</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="sit_hab" type="text" class="validate" style="display:none; visibility:hidden;">
+                  <label for="sit_hab"></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="jur" type="text" class="validate" style="display:none; visibility:hidden;">
+                  <label for="jur"></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="deud" type="text" class="validate" style="display:none; visibility:hidden;">
+                  <label for="deud"></label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="not_deud" type="text" class="validate" style="display:none; visibility:hidden;">
+                  <label for="not_deud"></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="titular_nombre" type="text" class="validate">
+                  <label for="titular_nombre">TITULAR</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="titular_dni" type="text" class="validate"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                  <label for="titular_dni">TITULAR DNI</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="ocupante_nombre" type="text" class="validate">
+                  <label for="ocupante_nombre">SUPLENTE</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="ocupante_dni" type="text" class="validate"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                  <label for="ocupante_dni">SUPLENTE DNI</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="reside_desde" type="date" class="validate">
+                  <label for="reside_desde">RESIDE DESDE</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="ide_viv" type="text" class="materialize-textarea"></textarea>
+                  <label for="ide_viv">DOMICILIO</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="obs_tit_ocu" type="text" class="materialize-textarea"></textarea>
+                  <label for="obs_tit_ocu">OBSERVACION</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q2_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q2_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q3">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>ANTECEDENTES IPRODHA</h5>
+            <div class="row">
+              <span>ANTECEDENTES:
+              </span>
+              <p>
+                <label for="si_antecedente">
+                  <input type="radio" id="si_antecedente" name="antecedente" value="Si" />
+                  <span>Si</span>
+                </label>
+              </p>
+              <p>
+                <label for="no_antecedente">
+                  <input type="radio" id="no_antecedente" name="antecedente" value="No" />
+                  <span>No</span>
+                </label>
+              </p>
+              <div class="row" style="padding-left: 25px;">
+                <span>CUAL:
+                </span>
+                <p>
+                  <label>
+                    <input type="checkbox" id="antecedentes_vivienda_iprodha" value="ANTECEDENTES VIVIENDA IPRODHA" />
+                    <span>ANTECEDENTES VIVIENDA IPRODHA</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="antecedente_programa_mejor_vivir"
+                      value="ANTECEDENTES PROGRAMA MEJOR VIVIR" />
+                    <span>ANTECEDENTES PROGRAMA MEJOR VIVIR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="antecedentes_vivienda_rural" value="ANTECEDENTES VIVIENDA RURAL" />
+                    <span>ANTECEDENTES VIVIENDA RURAL</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="antecedente_arreglo_mi_casa" value="ANTECEDENTE ARREGLO MI CASA" />
+                    <span>ANTECEDENTE ARREGLO MI CASA</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="antecedentes_lotes" value="ANTECEDENTES LOTES" />
+                    <span>ANTECEDENTES LOTES</span>
+                  </label>
+                </p>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="antecedente_otro" type="text" class="materialize-textarea"></textarea>
+                  <label for="antecedente_otro">OTROS</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q3_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q3_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q4">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>GRUPO FAMILIAR:</h5>
+            <span>¿Valido lo declarado?
+            </span>
+            <p>
+              <label for="si_fam">
+                <input type="radio" id="si_fam" name="valido" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_fam">
+                <input type="radio" id="no_fam" name="valido" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="input-field col s6">
+                <select id="numero_de_miembros">
+                  <option value="" disabled selected>SELECCIONAR NUMERO DE MIEMBROS</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                </select>
+                <label for="numero_de_miembros">CANTIDAD DE MIEMBROS</label>
+              </div>
+            </div>
+            <div class="row" id="render_integrantes">
+              <div class="i0">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_0" type="text" class="validate">
+                    <label for="integrante_0">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_0_nombre" type="text" class="validate">
+                    <label for="integrante_0_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_0_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_0_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_0_sexo" type="text" class="validate">
+                    <label for="integrante_0_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_0_fecha" type="date" class="validate">
+                    <label for="integrante_0_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_0_nacionalidad" type="text" class="validate">
+                    <label for="integrante_0_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_0_civil" type="text" class="validate">
+                    <label for="integrante_0_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_0_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_0_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_0_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_0_formal_informal" type="text" class="validate">
+                      <label for="integrante_0_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_0_ingresos" type="text" class="validate">
+                      <label for="integrante_0_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_0_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_0_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_0_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_0_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_0_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_0_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_0_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_0_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i1">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_1" type="text" class="validate">
+                    <label for="integrante_1">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_1_nombre" type="text" class="validate">
+                    <label for="integrante_1_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_1_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_1_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_1_sexo" type="text" class="validate">
+                    <label for="integrante_1_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_1_fecha" type="date" class="validate">
+                    <label for="integrante_1_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_1_nacionalidad" type="text" class="validate">
+                    <label for="integrante_1_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_1_civil" type="text" class="validate">
+                    <label for="integrante_1_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_1_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_1_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_1_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_1_formal_informal" type="text" class="validate">
+                      <label for="integrante_1_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_1_ingresos" type="text" class="validate">
+                      <label for="integrante_1_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_1_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_1_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_1_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_1_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_1_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_1_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_1_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_1_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i2">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_2" type="text" class="validate">
+                    <label for="integrante_2">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_2_nombre" type="text" class="validate">
+                    <label for="integrante_2_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_2_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_2_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_2_sexo" type="text" class="validate">
+                    <label for="integrante_2_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_2_fecha" type="date" class="validate">
+                    <label for="integrante_2_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_2_nacionalidad" type="text" class="validate">
+                    <label for="integrante_2_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_2_civil" type="text" class="validate">
+                    <label for="integrante_2_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_2_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_2_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_2_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_2_formal_informal" type="text" class="validate">
+                      <label for="integrante_2_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_2_ingresos" type="text" class="validate">
+                      <label for="integrante_2_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_2_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_2_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_2_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_2_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_2_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_2_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_2_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_2_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i3">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_3" type="text" class="validate">
+                    <label for="integrante_3">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_3_nombre" type="text" class="validate">
+                    <label for="integrante_3_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_3_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_3_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_3_sexo" type="text" class="validate">
+                    <label for="integrante_3_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_3_fecha" type="date" class="validate">
+                    <label for="integrante_3_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_3_nacionalidad" type="text" class="validate">
+                    <label for="integrante_3_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_3_civil" type="text" class="validate">
+                    <label for="integrante_3_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_3_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_3_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_3_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_3_formal_informal" type="text" class="validate">
+                      <label for="integrante_3_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_3_ingresos" type="text" class="validate">
+                      <label for="integrante_3_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_3_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_3_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_3_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_3_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_3_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_3_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_3_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_3_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i4">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_4" type="text" class="validate">
+                    <label for="integrante_4">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_4_nombre" type="text" class="validate">
+                    <label for="integrante_4_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_4_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_4_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_4_sexo" type="text" class="validate">
+                    <label for="integrante_4_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_4_fecha" type="date" class="validate">
+                    <label for="integrante_4_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_4_nacionalidad" type="text" class="validate">
+                    <label for="integrante_4_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_4_civil" type="text" class="validate">
+                    <label for="integrante_4_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_4_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_4_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_4_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_4_formal_informal" type="text" class="validate">
+                      <label for="integrante_4_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_4_ingresos" type="text" class="validate">
+                      <label for="integrante_4_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_4_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_4_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_4_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_4_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_4_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_4_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_4_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_4_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i5">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_5" type="text" class="validate">
+                    <label for="integrante_5">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_5_nombre" type="text" class="validate">
+                    <label for="integrante_5_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_5_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_5_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_5_sexo" type="text" class="validate">
+                    <label for="integrante_5_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_5_fecha" type="date" class="validate">
+                    <label for="integrante_5_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_5_nacionalidad" type="text" class="validate">
+                    <label for="integrante_5_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_5_civil" type="text" class="validate">
+                    <label for="integrante_5_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_5_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_5_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_5_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_5_formal_informal" type="text" class="validate">
+                      <label for="integrante_5_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_5_ingresos" type="text" class="validate">
+                      <label for="integrante_5_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_5_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_5_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_5_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_5_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_5_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_5_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_5_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_5_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i6">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_6" type="text" class="validate">
+                    <label for="integrante_6">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_6_nombre" type="text" class="validate">
+                    <label for="integrante_6_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_6_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_6_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_6_sexo" type="text" class="validate">
+                    <label for="integrante_6_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_6_fecha" type="date" class="validate">
+                    <label for="integrante_6_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_6_nacionalidad" type="text" class="validate">
+                    <label for="integrante_6_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_6_civil" type="text" class="validate">
+                    <label for="integrante_6_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_6_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_6_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_6_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_6_formal_informal" type="text" class="validate">
+                      <label for="integrante_6_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_6_ingresos" type="text" class="validate">
+                      <label for="integrante_6_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_6_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_6_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_6_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_6_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_6_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_6_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_6_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_6_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i7">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_7" type="text" class="validate">
+                    <label for="integrante_7">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_7_nombre" type="text" class="validate">
+                    <label for="integrante_7_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_7_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_7_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_7_sexo" type="text" class="validate">
+                    <label for="integrante_7_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_7_fecha" type="date" class="validate">
+                    <label for="integrante_7_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_7_nacionalidad" type="text" class="validate">
+                    <label for="integrante_7_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_7_civil" type="text" class="validate">
+                    <label for="integrante_7_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_7_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_7_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_7_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_7_formal_informal" type="text" class="validate">
+                      <label for="integrante_7_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_7_ingresos" type="text" class="validate">
+                      <label for="integrante_7_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_7_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_7_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_7_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_7_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_7_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_7_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_7_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_7_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i8">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_8" type="text" class="validate">
+                    <label for="integrante_8">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_8_nombre" type="text" class="validate">
+                    <label for="integrante_8_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_8_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_8_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_8_sexo" type="text" class="validate">
+                    <label for="integrante_8_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_8_fecha" type="date" class="validate">
+                    <label for="integrante_8_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_8_nacionalidad" type="text" class="validate">
+                    <label for="integrante_8_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_8_civil" type="text" class="validate">
+                    <label for="integrante_8_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_8_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_8_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_8_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_8_formal_informal" type="text" class="validate">
+                      <label for="integrante_8_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_8_ingresos" type="text" class="validate">
+                      <label for="integrante_8_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_8_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_8_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_8_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_8_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_8_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_8_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_8_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_8_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i9">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_9" type="text" class="validate">
+                    <label for="integrante_9">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_9_nombre" type="text" class="validate">
+                    <label for="integrante_9_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_9_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_9_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_9_sexo" type="text" class="validate">
+                    <label for="integrante_9_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_9_fecha" type="date" class="validate">
+                    <label for="integrante_9_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_9_nacionalidad" type="text" class="validate">
+                    <label for="integrante_9_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_9_civil" type="text" class="validate">
+                    <label for="integrante_9_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_9_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_9_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_9_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_9_formal_informal" type="text" class="validate">
+                      <label for="integrante_9_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_9_ingresos" type="text" class="validate">
+                      <label for="integrante_9_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_9_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_9_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_9_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_9_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_9_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_9_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_9_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_9_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i10">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_10" type="text" class="validate">
+                    <label for="integrante_10">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_10_nombre" type="text" class="validate">
+                    <label for="integrante_10_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_10_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_10_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_10_sexo" type="text" class="validate">
+                    <label for="integrante_10_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_10_fecha" type="date" class="validate">
+                    <label for="integrante_10_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_10_nacionalidad" type="text" class="validate">
+                    <label for="integrante_10_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_10_civil" type="text" class="validate">
+                    <label for="integrante_10_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_10_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_10_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_10_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_10_formal_informal" type="text" class="validate">
+                      <label for="integrante_10_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_10_ingresos" type="text" class="validate">
+                      <label for="integrante_10_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_10_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_10_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_10_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_10_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_10_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_10_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_10_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_10_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i11">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_11" type="text" class="validate">
+                    <label for="integrante_11">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_11_nombre" type="text" class="validate">
+                    <label for="integrante_11_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_11_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_11_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_11_sexo" type="text" class="validate">
+                    <label for="integrante_11_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_11_fecha" type="date" class="validate">
+                    <label for="integrante_11_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_11_nacionalidad" type="text" class="validate">
+                    <label for="integrante_11_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_11_civil" type="text" class="validate">
+                    <label for="integrante_11_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_11_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_11_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_11_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_11_formal_informal" type="text" class="validate">
+                      <label for="integrante_11_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_11_ingresos" type="text" class="validate">
+                      <label for="integrante_11_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_11_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_11_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_11_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_11_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_11_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_11_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_11_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_11_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_12" type="text" class="validate">
+                    <label for="integrante_12">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_12_nombre" type="text" class="validate">
+                    <label for="integrante_12_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_12_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_12_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_12_sexo" type="text" class="validate">
+                    <label for="integrante_12_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_12_fecha" type="date" class="validate">
+                    <label for="integrante_12_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_12_nacionalidad" type="text" class="validate">
+                    <label for="integrante_12_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_12_civil" type="text" class="validate">
+                    <label for="integrante_12_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_12_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_12_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_12_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_12_formal_informal" type="text" class="validate">
+                      <label for="integrante_12_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_12_ingresos" type="text" class="validate">
+                      <label for="integrante_12_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_12_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_12_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_12_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_12_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_12_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_12_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_12_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_12_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="i13">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_13" type="text" class="validate">
+                    <label for="integrante_13">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_13_nombre" type="text" class="validate">
+                    <label for="integrante_13_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_13_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_13_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_13_sexo" type="text" class="validate">
+                    <label for="integrante_13_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_13_fecha" type="date" class="validate">
+                    <label for="integrante_13_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_13_nacionalidad" type="text" class="validate">
+                    <label for="integrante_13_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_13_civil" type="text" class="validate">
+                    <label for="integrante_13_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_13_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_13_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_13_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_13_formal_informal" type="text" class="validate">
+                      <label for="integrante_13_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_13_ingresos" type="text" class="validate">
+                      <label for="integrante_13_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_13_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_13_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_13_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_13_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_13_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_13_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_13_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_13_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="i14">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="integrante_14" type="text" class="validate">
+                    <label for="integrante_14">INTEGRANTE</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_14_nombre" type="text" class="validate">
+                    <label for="integrante_14_nombre">APELLIDO Y NOMBRE</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_14_dni" type="text" class="validate"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+                    <label for="integrante_14_dni">DNI</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_14_sexo" type="text" class="validate">
+                    <label for="integrante_14_sexo">SEXO</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_14_fecha" type="date" class="validate">
+                    <label for="integrante_14_fecha">FECHA DE NACIMIENTO</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="integrante_14_nacionalidad" type="text" class="validate">
+                    <label for="integrante_14_nacionalidad">NACIONALIDAD</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="integrante_14_civil" type="text" class="validate">
+                    <label for="integrante_14_civil">ESTADO CIVIL</label>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 25px;">
+                  <span>TRABAJO:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_14_trabaja" value="TRABAJA" />
+                      <span>TRABAJA</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_14_tipo_trabajo" type="text" class="validate">
+                      <label for="integrante_14_tipo_trabajo">TIPO DE TRABAJO</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="integrante_14_formal_informal" type="text" class="validate">
+                      <label for="integrante_14_formal_informal">FORMAL O INFORMAL</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_14_ingresos" type="text" class="validate">
+                      <label for="integrante_14_ingresos">INGRESO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="integrante_14_otros_ingresos" type="text" class="validate">
+                      <label for="integrante_14_otros_ingresos">OTROS INGRESOS (OBS)</label>
+                    </div>
+                  </div>
+                  <span>DISCAPACIDAD:
+                  </span>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_14_discapacidad" value="DISCAPACIDAD" />
+                      <span>DISCAPACIDAD</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="integrante_14_cud" value="CUD" />
+                      <span>CUD</span>
+                    </label>
+                  </p>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="integrante_14_fecha_vigencia_cud" type="date" class="validate">
+                      <label for="integrante_14_fecha_vigencia_cud">FECHA DE VIGENCIA DEL CUD</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <textarea id="integrante_14_diagnostico" type="text" class="materialize-textarea"></textarea>
+                      <label for="integrante_14_diagnostico">DIAGNOSTICO</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span>SI TITULAR Y CONYUGE SON SOLTEROS AGREGAR LOS NOMBRES DE LOS PADRES DE AMBOS:
+            </span>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="padre_titular" type="text" class="validate">
+                <label for="padre_titular">PADRE TITULA</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="madre_titular" type="text" class="validate">
+                <label for="madre_titular">MADRE TITULAR</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="padre_conyuge" type="text" class="validate">
+                <label for="padre_conyuge">PADRE CONYUGE</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="madre_conyuge" type="text" class="validate">
+                <label for="madre_conyuge">MADRE CONYUGE</label>
+              </div>
+            </div>
+            <span>Transplante:
+            </span>
+            <p>
+              <label for="si_t">
+                <input type="radio" id="si_t" name="transplante" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_t">
+                <input type="radio" id="no_t" name="transplante" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" id="cucaimi" value="CUCAIMI" />
+                <span>CUCAIMI</span>
+              </label>
+            </p>
+            <div class="row" style="padding-left: 25px;">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="gurpo_familiar_contacto" type="text" class="validate">
+                  <label for="gurpo_familiar_contacto">CONTACTO (TELEFONO CORREO ELECTRONICO)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col">
+                  <textarea id="obs_fam" type="text" class="materialize-textarea"></textarea>
+                  <label for="obs_fam">Observación</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q4_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q4_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q5">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>SITUACION HABITACIONAL:</h5>
+            <span>¿Valido lo declarado?
+            </span>
+            <p>
+              <label for="si_v">
+                <input type="radio" id="si_v" name="valido" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_v">
+                <input type="radio" id="no_v" name="valido" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <span>ALQUILER:
+            </span>
+            <p>
+              <label for="si_a">
+                <input type="radio" id="si_a" name="alquila" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_a">
+                <input type="radio" id="no_a" name="alquila" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <span>PRESTAMO:
+            </span>
+            <p>
+              <label for="si_p">
+                <input type="radio" id="si_p" name="prestamo" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_p">
+                <input type="radio" id="no_p" name="prestamo" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <span>OCUPANTE GRATUITO:
+            </span>
+            <p>
+              <label for="si_og">
+                <input type="radio" id="si_og" name="ocu_grat" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_og">
+                <input type="radio" id="no_og" name="ocu_grat" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <span>COMPRO LA VIVIENDA:
+            </span>
+            <p>
+              <label for="si_cp">
+                <input type="radio" id="si_cp" name="compro_viv" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_cp">
+                <input type="radio" id="no_cp" name="compro_viv" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <h5>TIPO DE VIVIENDA:</h5>
+            <div class="row">
+              <div class="input-field col s6">
+                <select id="cantidad_de_dormitorios">
+                  <option value="" disabled selected>SELECCIONAR NUMERO DE DORMITORIOS</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                </select>
+                <label for="cantidad_de_dormitorios">CANTIDAD DE DORMITORIOS</label>
+              </div>
+            </div>
+            <span>MADERA:
+            </span>
+            <p>
+              <label for="si_madera">
+                <input type="radio" id="si_madera" name="madera" value="MADERA" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_madera">
+                <input type="radio" id="no_madera" name="madera" value="" />
+                <span>No</span>
+              </label>
+            </p>
+            <span>MAMPOSTERIA:
+            </span>
+            <p>
+              <label for="si_mamposteria">
+                <input type="radio" id="si_mamposteria" name="mamposteria" value="MAMPOSTERIA" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_mamposteria">
+                <input type="radio" id="no_mamposteria" name="mamposteria" value="" />
+                <span>No</span>
+              </label>
+            </p>
+            <span>MIXTA:
+            </span>
+            <p>
+              <label for="si_mixta">
+                <input type="radio" id="si_mixta" name="mixta" value="MIXTA" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_mixta">
+                <input type="radio" id="no_mixta" name="mixta" value="" />
+                <span>No</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="mixta_materiales" type="text" class="validate">
+                <label for="mixta_materiales">MIXTA MATERIALES</label>
+              </div>
+            </div>
+            <h5>ESTADO DE VIVIENDA:</h5>
+            <div class="row" style="padding-left: 15px;">
+              <p>
+                <label>
+                  <input type="checkbox" id="muy_bueno" value="MUY BUENO" />
+                  <span>MUY BUENO</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" id="bueno" value="BUENO" />
+                  <span>BUENO</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" id="regular" value="REGULAR" />
+                  <span>REGULAR</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" id="malo" value="MALO" />
+                  <span>MALO</span>
+                </label>
+              </p>
+              <span>AMPLIACIONES:
+              </span>
+              <p>
+                <label for="si_ampl">
+                  <input type="radio" id="si_ampl" name="ampliaciones" value="Si" />
+                  <span>Si</span>
+                </label>
+              </p>
+              <p>
+                <label for="no_ampl">
+                  <input type="radio" id="no_ampl" name="ampliaciones" value="No" />
+                  <span>No</span>
+                </label>
+              </p>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="obs_sit_hab" type="text" class="materialize-textarea"></textarea>
+                <label for="obs_sit_hab">OBSERVACION</label>
+              </div>
+            </div>
+            <div class="row" style="padding-left: 25px;">
+              <h5>TIPOS DE SERVICOS:</h5>
+              <span>AGUA:
+              </span>
+              <p>
+                <label for="si_agua">
+                  <input type="radio" id="si_agua" name="agua" value="Si" />
+                  <span>Si</span>
+                </label>
+              </p>
+              <p>
+                <label for="no_agua">
+                  <input type="radio" id="no_agua" name="agua" value="No" />
+                  <span>No</span>
+                </label>
+              </p>
+              <div class="input-field col s6">
+                <select id="agua_formal_informal">
+                  <option value="" disabled selected>SELECCIONAR</option>
+                  <option value="FORMAL">FORMAL</option>
+                  <option value="INFORMAL">INFORMAL</option>
+                </select>
+                <label for="agua_formal_informal">SELECCIONE FORMAL O INFORMAL</label>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="agua_gasto" type="text" class="validate">
+                  <label for="agua_gasto">$</label>
+                </div>
+              </div>
+              <span>ELECTRICIDAD:
+              </span>
+              <p>
+                <label for="si_electricidad">
+                  <input type="radio" id="si_electricidad" name="electricidad" value="Si" />
+                  <span>Si</span>
+                </label>
+              </p>
+              <p>
+                <label for="no_electricidad">
+                  <input type="radio" id="no_electricidad" name="electricidad" value="No" />
+                  <span>No</span>
+                </label>
+              </p>
+              <div class="input-field col s6">
+                <select id="electricidad_formal_informal">
+                  <option value="" disabled selected>SELECCIONAR</option>
+                  <option value="FORMAL">FORMAL</option>
+                  <option value="INFORMAL">INFORMAL</option>
+                </select>
+                <label for="electricidad_formal_informal">SELECCIONE FORMAL O INFORMAL</label>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="electricidad_gasto" type="text" class="validate">
+                  <label for="electricidad_gasto">$</label>
+                </div>
+              </div>
+              <span>TV:
+              </span>
+              <p>
+                <label for="si_tv">
+                  <input type="radio" id="si_tv" name="tv" value="Si" />
+                  <span>Si</span>
+                </label>
+              </p>
+              <p>
+                <label for="no_tv">
+                  <input type="radio" id="no_tv" name="tv" value="No" />
+                  <span>No</span>
+                </label>
+              </p>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="tv_gasto" type="text" class="validate">
+                  <label for="tv_gasto">$</label>
+                </div>
+              </div>
+              <span>INTERNET:
+              </span>
+              <p>
+                <label for="si_internet">
+                  <input type="radio" id="si_internet" name="internet" value="Si" />
+                  <span>Si</span>
+                </label>
+              </p>
+              <p>
+                <label for="no_internet">
+                  <input type="radio" id="no_internet" name="internet" value="No" />
+                  <span>No</span>
+                </label>
+              </p>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="internet_gasto" type="text" class="validate">
+                  <label for="internet_gasto">$</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="obs_serv" type="text" class="materialize-textarea"></textarea>
+                  <label for="obs_serv">OBSERVACION</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q5_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q5_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q6">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>SITUACION FINANCIERA:</h5>
+            <span>¿Valido lo declarado?
+            </span>
+            <p>
+              <label for="si_f">
+                <input type="radio" id="si_f" name="valido" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_f">
+                <input type="radio" id="no_f" name="valido" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <span>Gastos Mensuales:
+            </span>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="gas_ali" type="text" class="validate">
+                <label for="gas_ali">ALIMENTO $</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="gas_esc" type="text" class="validate">
+                <label for="gas_esc">ESCOLARIDAD $</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="gas_med" type="text" class="validate">
+                <label for="gas_med">MEDICAMENTOS $</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="gas_movil" type="text" class="validate">
+                <label for="gas_movil">MOVILIDAD $</label>
+              </div>
+            </div>
+            <span>OBRA SOCIAL:
+            </span>
+            <p>
+              <label for="si_ob">
+                <input type="radio" id="si_ob" name="obrsoc" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_ob">
+                <input type="radio" id="no_ob" name="obrsoc" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="cual_obrsoc" type="text" class="validate">
+                <label for="cual_obrsoc">Cual</label>
+              </div>
+            </div>
+            <span>TARJETAS:
+            </span>
+            <p>
+              <label for="si_tarjeta">
+                <input type="radio" id="si_tarjeta" name="tarjeta" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_tarjeta">
+                <input type="radio" id="no_tarjeta" name="tarjeta" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="cual_tarjeta" type="text" class="validate">
+                <label for="cual_tarjeta">Cual</label>
+              </div>
+            </div>
+            <span>PRESTAMO:
+            </span>
+            <p>
+              <label for="si_prestamo_gasto">
+                <input type="radio" id="si_prestamo_gasto" name="prestamo_gasto" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_prestamo_gasto">
+                <input type="radio" id="no_prestamo_gasto" name="prestamo_gasto" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="cual_prestamo" type="text" class="validate">
+                <label for="cual_prestamo">Cual</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="observaciones_sit_eco" type="text" class="materialize-textarea"></textarea>
+                <label for="observaciones_sit_eco">OBSERVACIONES</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q6_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q6_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q7">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>GARANTE:</h5>
+            <span>¿Valido lo declarado?
+            </span>
+            <p>
+              <label for="si_g">
+                <input type="radio" id="si_g" name="valido" value="Si" />
+                <span>Si</span>
+              </label>
+            </p>
+            <p>
+              <label for="no_g">
+                <input type="radio" id="no_g" name="valido" value="No" />
+                <span>No</span>
+              </label>
+            </p>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="garante_apellido" type="text" class="validate">
+                <label for="garante_apellido">Apellido</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="garante_nombre" type="text" class="validate">
+                <label for="garante_nombre">Nombre</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="garante_dni" type="text" class="validate">
+                <label for="garante_dni">DNI</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="garante_ingresos" type="text" class="validate">
+                <label for="garante_ingresos">Ingresos</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col">
+                <textarea id="obs_garante" type="text" class="materialize-textarea"></textarea>
+                <label for="obs_garante">Observación</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q7_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q7_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q8">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>REQUISITOS:</h5>
+            <div class="row" style="padding-left: 25px;">
+              <div class="row">
+                <span>REQUISITOS GRUPO FAMILIAR:
+                </span>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dni_fam" value="DNI" />
+                    <span>D.N.I</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dni_con" value="DNI CÓNYUGE" />
+                    <span>D.N.I. CÓNYUGE</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dni_hij" value="DNI HIJO" />
+                    <span>D.N.I. HIJO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="act_mat" value="ACTA DE MATRIMONIO" />
+                    <span>ACTA DE MATRIMONIO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="uni_conv" value="UNION CONVIVENCIAL" />
+                    <span>UNION CONVIVENCIAL</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="part_nac" value="PARTIDAS NAC" />
+                    <span>PARTIDAS NAC</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="ten_men" value="TENENCIA MENORES" />
+                    <span>TENENCIA MENORES</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="ac_cej" value="ACUERDO CEJUME" />
+                    <span>ACUERDO CEJUME</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="esc" value="ESCOLARIDAD" />
+                    <span>ESCOLARIDAD</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="cert_conv_int" value="CERTIFICADO DE CONVIVENCIA (INT)" />
+                    <span>CERTIFICADO DE CONVIVENCIA (INT)</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="sent_divor" value="SENTENCIA DIVORCIO" />
+                    <span>SENTENCIA DIVORCIO</span>
+                  </label>
+                </p>
+                <span>REQUISITOS SIT. HAB.:
+                </span>
+                <p>
+                  <label>
+                    <input type="checkbox" id="con_alq" value="CONTRATO ALQUILER" />
+                    <span>CONTRATO ALQUILER</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="rec_alq" value="RECIBO DE ALQUILER" />
+                    <span>RECIBO DE ALQUILER</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="nota_pres" value="NOTA DE PRESTAMO" />
+                    <span>NOTA DE PRESTAMO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dni_pres" value="DNI PRESTADOR" />
+                    <span>DNI PRESTADOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="tit_bcv" value="TITTULO O BCV" />
+                    <span>TITTULO O BCV</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="finc" value="NRO FINCA MUNICIPAL" />
+                    <span>NRO FINCA MUNICIPAL</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dom_serv" value="CERT. DOMICILIO /BOLETA SERV" />
+                    <span>CERT. DOMICILIO /BOLETA SERV</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="rpi" value="RPI" />
+                    <span>RPI</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="otros_sit" value="OTROS" />
+                    <span>OTROS</span>
+                  </label>
+                </p>
+                <span>REQUISITOS SIT. FINANCIERA:
+                </span>
+                <p>
+                  <label>
+                    <input type="checkbox" id="rec_sue" value="RECIBO DE SUELDO" />
+                    <span>RECIBO DE SUELDO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="cbu" value="CBU" />
+                    <span>CBU</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="rec_pen" value="RECIBO PENSIONES" />
+                    <span>RECIBO PENSIONES</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="asignaciones" value="ASIGNACIONES" />
+                    <span>ASIGNACIONES</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="cor_ban" value="CORTE DE HOJA BANCO" />
+                    <span>CORTE DE HOJA BANCO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dec_jur" value="DECLARACION JURADA" />
+                    <span>DECLARACION JURADA</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="mon_cony" value="MONOTRIBUTO TIULAR/CONYUGE" />
+                    <span>MONOTRIBUTO TIULAR/CONYUGE</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="sr_318_fam" value="SR 318" />
+                    <span>SR 318</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="pago_iibb_fam" value="PAGO IIBB" />
+                    <span>PAGO IIBB</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="mon_fam" value="PAGO MONOTRIBUTO" />
+                    <span>PAGO MONOTRIBUTO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="deb_fam" value="DEBITO" />
+                    <span>DEBITO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="apoyo_fin" value="DEBITO" />
+                    <span>APOYO FINANCIERO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="redes_fam" value="DEBITO" />
+                    <span>REDES FAMILIARES</span>
+                  </label>
+                </p>
+                <span>REQUISITOS GARANTE:
+                </span>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dni_cod" value="DNI CODEUDOR" />
+                    <span>DNI CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="rec_cod" value="RECIBO CODEUDOR" />
+                    <span>RECIBO CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="mon_cod" value="MONOTRIBUTO CODEUDOR" />
+                    <span>MONOTRIBUTO CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="sr_318" value="SR 318 CODEUDOR" />
+                    <span>SR 318 CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="iibb_cod" value="PAGO IIBB CODEUDOR" />
+                    <span>PAGO IIBB CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="pago_mon_cod" value="PAGO MONOTRIBUTO CODEUDOR" />
+                    <span>PAGO MONOTRIBUTO CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="cbu_cod" value="CBU CODEUDOR" />
+                    <span>CBU CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="dom_cod" value="DOMICILIO CODEUDOR" />
+                    <span>DOMICILIO CODEUDOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="plan_cod" value="PLANILLA CODEUDOR" />
+                    <span>PLANILLA CODEUDOR</span>
+                  </label>
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q8_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q8_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q9">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>CUOTA IPRODHA:</h5>
+            <div class="row" style="padding-left: 25px;">
+              <div class="row">
+                <span>FORMA DE PAGO:
+                </span>
+                <p>
+                  <label>
+                    <input type="checkbox" id="ventanilla" value="VENTANILA" />
+                    <span>VENTANILA</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="debito_automatico" value="DEBITO AUTOMATICO" />
+                    <span>DEBITO AUTOMATICO</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="retencion_haberes" value="RETENCION HABERES" />
+                    <span>RETENCION HABERES</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="garante_pagador" value="GARANTE PAGADOR" />
+                    <span>GARANTE PAGADOR</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" id="no_factura" value="NO FACTURA /RES 210/19" />
+                    <span>NO FACTURA /RES 210/19</span>
+                  </label>
+                </p>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="quien_paga" type="text" class="validate">
+                    <label for="quien_paga">QUIEN PAGA</label>
+                  </div>
+                </div>
+              </div>
+              <h5>CONCLUSION CUOTA DE AMORTIZACION</h5>
+              <p>
+                <label>
+                  <input type="checkbox" id="cuota_social" value="CUOTA SOCIAL" />
+                  <span>CUOTA SOCIAL</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox" id="cuota_provisoria" value="CUOTA PROVISORIA" />
+                  <span>CUOTA PROVISORIA</span>
+                </label>
+              </p>
+              <span>CUOTA ESTANDAR:
+              </span>
+              <p>
+                <label>
+                  <input type="checkbox" id="da" value="DA" />
+                  <span>DA</span>
+                </label>
+              </p>
+              <ul class="collection">
+                <li class="collection-item red lighten-5">
+                  <p>
+                    <label>
+                      <input type="checkbox" id="aq" value="AQ" />
+                      <span>AQ</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="fuerzas" value="FUERZAS" />
+                      <span>FUERZAS</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="estado_civil" value="ESTADO CIVIL" />
+                      <span>ESTADO CIVIL</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="antecedentes" value="ANTECEDENTES" />
+                      <span>ANTECEDENTES</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" id="mayores_60" value="ESTADO CIVIL" />
+                      <span>MAYORES DE 60</span>
+                    </label>
+                  </p>
+                </li>
+              </ul>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="plazo_presentacion" type="date" class="validate">
+                  <label for="plazo_presentacion">PLAZO DE PRESENTACION DE PAPELES</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="conc" type="text" class="validate">
+                  <label for="conc">CONCLUSION</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q9_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+        <a id="q9_boton_sig" class="next" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">Siguiente &raquo;</a>
+      </div>
+    </div>
+    <div class="q10">
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel red lighten-5">
+            <h5>¿Desea finalizar la encuesta?</h5>
+            <span>Una vez finalizada la encuesta los datos no podran ser modificados.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="center">
+        <a id="q10_boton_atr" class="previous" style="text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;">&laquo; Atras</a>
+      </div>
+    </div>
+    <div class="input-field center">
+      <button class="sidenav-close btn-small">Finalizar</button>
+    </div>
+  </form>
+
+
+  <div class="fixed-action-btn" id="iniciar_encuesta_boton">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+
+  <div class="informe_cargados container grey-text text-darken-1">
+
+  </div>
+
+
+
+  {% endblock %}
+
+  {% block script %}
+
+
+  <script>
+
+
+
+    // TODO: Add SDKs for Firebase products that you want to use
+
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+    // Your web app's Firebase configuration
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+    var firebaseConfig = {
+
+      apiKey: "AIzaSyAQ0ZeQB2eeLambnVuoMJLN-fc02p4lKdQ",
+      authDomain: "iprodha-app.firebaseapp.com",
+      projectId: "iprodha-app",
+      storageBucket: "iprodha-app.appspot.com",
+      messagingSenderId: "42717497099",
+      appId: "1:42717497099:web:dd1ffb389b93554a4a040e",
+      measurementId: "G-EPYN7660SP"
+
+    };
+
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const db = firebase.firestore();
+    var storageRef = firebase.storage().ref();
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.coords.latitude, position.coords.longitude);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // nav menu
+      const select = document.querySelectorAll('select');
+      M.FormSelect.init(select);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // nav menu
+      const autocompletador = document.querySelectorAll('.autocomplete');
+      M.Autocomplete.init(autocompletador, {
+        data: {
+          "9 de Julio": null,
+          "25 de Mayo": null,
+          "Alba Posse": null,
+          "Almafuerte": null,
+          "Apóstoles": null,
+          "Aristóbulo del Valle": null,
+          "Arroyo del Medio": null,
+          "Azara": null,
+          "Barra Concepción": null,
+          "Barrio Bernardino Rivadavia": null,
+          "Barrio del Lago": null,
+          "Barrio Rural": null,
+          "Bernardo de Irigoyen": null,
+          "Bonpland": null,
+          "Caá Yarí": null,
+          "Camión Cue": null,
+          "Campo Grande": null,
+          "Campo Ramón": null,
+          "Campo Viera": null,
+          "Candelaria": null,
+          "Capioví": null,
+          "Caraguatay": null,
+          "Cerro Azul": null,
+          "Cerro Corá": null,
+          "Colonia Alberdi": null,
+          "Colonia Alicia": null,
+          "Candelaria": null,
+          "Colonia Aparecida": null,
+          "Colonia Aurora": null,
+          "Colonia Delicia": null,
+          "Colonia Helvecia": null,
+          "Colonia Polana": null,
+          "Colonia Victoria": null,
+          "Comandante Andresito": null,
+          "Concepción de la Sierra": null,
+          "Corpus Christi": null,
+          "Cruce Caballero": null,
+          "Domingo Savio": null,
+          "Dos Arroyos": null,
+          "Dos de Mayo": null,
+          "El Alcázar": null,
+          "Dos Hermanas": null,
+          "El Piñalito": null,
+          "El Salto": null,
+          "El Soberbio": null,
+          "Eldorado": null,
+          "Estación Apóstoles": null,
+          "Fracrán": null,
+          "Fachinal": null,
+          "Florentino Ameghino": null,
+          "Garuhapé": null,
+          "Garuhapé-Mi": null,
+          "General Alvear": null,
+          "General Urquiza": null,
+          "Gobernador Lanusse": null,
+          "Gobernador López": null,
+          "Gobernador Roca": null,
+          "Guaraní": null,
+          "Hipólito Yrigoyen": null,
+          "Integración": null,
+          "Itacaruaré": null,
+          "Jardín América": null,
+          "La Corita": null,
+          "Laharrague": null,
+          "Leandro N. Alem": null,
+          "Loreto": null,
+          "Los Helechos": null,
+          "Mártires": null,
+          "Mbopicuá": null,
+          "Mojón Grande": null,
+          "Montecarlo": null,
+          "Nemesio Parma": null,
+          "Nueve de Julio Kilómetro 20": null,
+          "Oasis": null,
+          "Olegario Víctor Andrade": null,
+          "Panambí": null,
+          "Panambí Kilómetro 8": null,
+          "Paraje Fontana": null,
+          "Peñón del Teyú Cuaré": null,
+          "Pindapoy": null,
+          "Piray Kilómetro 18": null,
+          "Pozo Azul": null,
+          "Primero de Mayo": null,
+          "Profundidad": null,
+          "Pueblo Illia": null,
+          "Puerto Azara": null,
+          "Puerto Esperanza": null,
+          "Puerto Iguazú": null,
+          "Puerto Leoni": null,
+          "Puerto Libertad": null,
+          "Puerto Mado": null,
+          "Puerto Mineral": null,
+          "Puerto Pinares": null,
+          "Puerto Piray": null,
+          "Puerto Rico": null,
+          "Posadas": null,
+          "Garupa": null,
+          "Puerto Santa Ana": null,
+          "Reserva natural de la defensa Puerto Península": null,
+          "Roca Chica": null,
+          "Ruiz de Montoya": null,
+          "Salto Encantado": null,
+          "San Alberto": null,
+          "San Antonio": null,
+          "San Francisco de Asís": null,
+          "San Gotardo": null,
+          "San Ignacio": null,
+          "San Javier": null,
+          "San José": null,
+          "San Martín": null,
+          "San Pedro": null,
+          "San Vicente": null,
+          "Santa Ana": null,
+          "Santa María": null,
+          "Santa Rita": null,
+          "Santiago de Liniers": null,
+          "Santo Pipó": null,
+          "Tarumá": null,
+          "Terciados Paraíso": null,
+          "Tobuna": null,
+          "Torta Quemada": null,
+          "Tres Capones": null,
+          "Valle Hermoso": null,
+          "Villa Akerman": null,
+          "Villa Bonita": null,
+          "Villa Libertad": null,
+          "Villa Parodi": null,
+          "Villa Roulet": null,
+          "Villa Salto Encantado": null,
+          "Villalonga": null,
+          "Wanda": null,
+        },
+      });
+    });
+
+    const selectMiembros = document.getElementById('numero_de_miembros');
+
+    selectMiembros.addEventListener('change', (e) => {
+
+      let parent = document.getElementById("render_integrantes");
+      console.log(parent);
+      for (let i = 0; i < parent.children.length; i++) {
+        parent.children[i].style.display = "none";
+      };
+      for (let i = 0; i < e.target.value; i++) {
+        parent.children[i].style.display = "block";
+      };
+    });
+
+
+  </script>
+  <script src="/js/encuesta.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/db.js"></script>
+  <script src="/js/user.js"></script>
+
+  {% endblock %}
