@@ -23,20 +23,20 @@ UPLOAD_FOLDER = 'static/uploads'
 ALLOWED_EXTENSIONS = {'geojson'}
 
 app = Flask(__name__)
-app.secret_key = "0857a43ce93c1b4a429d0ae18a3caadee75c3c71b236e9fc"
+app.secret_key = "*****************" # llave secreta de la app
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-cred = credentials.Certificate('static/credentials/service_account.json')
+cred = credentials.Certificate('static/credentials/service_account.json') # google service_account para conexion con firebase
 firebase_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 app.config[
-    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://germandiaz09a2:rmapsgda1@database-iprodha.cbsx4ezbgmpk.us-east-1.rds.amazonaws.com:5432/postgres'
+    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://*****************************************************************/postgres' # string de conexion para rds amazon postgres sql
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 dbsql = SQLAlchemy(app)
 migrate = Migrate(app, dbsql)
 
-IMGUR_CLIENT_ID = "a640e02866c8b62"
+IMGUR_CLIENT_ID = "*****************" # API key de IMGUR para guardar imagenes
 
 class Estado(dbsql.Model):
     id = dbsql.Column(dbsql.Integer, primary_key=True)
